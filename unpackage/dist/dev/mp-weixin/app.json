@@ -1,0 +1,46 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/car/car",
+    "pages/consult/consult",
+    "pages/my/my"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8",
+    "titleNView": false
+  },
+  "tabBar": {
+    "color": "#E2DFDA",
+    "selectedColor": "#AE895C",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "./static/img/shouye_nav.png",
+        "selectedIconPath": "./static/img/shouye_nav_on.png"
+      },
+      {
+        "pagePath": "pages/car/car",
+        "iconPath": "./static/img/cheku_nav.png",
+        "selectedIconPath": "./static/img/cheku_nav_on.png"
+      },
+      {
+        "pagePath": "pages/consult/consult",
+        "iconPath": "./static/img/zixun_nav.png",
+        "selectedIconPath": "./static/img/zixun_nav_on.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "iconPath": "./static/img/wode_nav.png",
+        "selectedIconPath": "./static/img/wode_nav_on.png"
+      }
+    ]
+  },
+  "usingComponents": {},
+  "sitemapLocation": "sitemap74.json"
+}

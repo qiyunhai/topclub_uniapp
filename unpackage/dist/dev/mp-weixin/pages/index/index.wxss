@@ -1,0 +1,244 @@
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.main {
+  background-color: #FBFBFB;
+  width: 100%;
+  height: auto;
+}
+.content {
+  width: 670rpx;
+  margin: 0 auto;
+}
+.search {
+  float: left;
+  position: relative;
+  margin-top: 30rpx;
+  width: 596rpx;
+  height: 48rpx;
+  background-color: #EBEBEB;
+  -webkit-border-radius: 12px;
+          border-radius: 12px;
+}
+.search .icon {
+  position: absolute;
+  width: 24rpx;
+  height: 28rpx;
+  top: 10rpx;
+  left: 32rpx;
+}
+.search input {
+  position: absolute;
+  left: 76rpx;
+  width: 500rpx;
+  height: 28rpx;
+  line-height: 28rpx;
+  font-size: 20rpx;
+  font-weight: 400;
+}
+.kefu {
+  position: absolute;
+  float: left;
+  width: 50rpx;
+  height: 52rpx;
+  top: 26rpx;
+  right: 40rpx;
+}
+swiper {
+  width: 670rpx;
+  height: 280rpx;
+  padding-top: 106rpx;
+}
+swiper image {
+  width: 670rpx;
+  height: 280rpx;
+  -webkit-border-radius: 8px;
+          border-radius: 8px;
+}
+.menu {
+  margin-top: 40rpx;
+}
+.menu .item {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  height: 152rpx;
+  width: 138rpx;
+  margin-left: 38rpx;
+}
+.menu .item image {
+  width: 100%;
+  height: 100%;
+}
+.menu .item:nth-child(1) {
+  margin-left: 0rpx;
+}
+.member {
+  position: relative;
+  margin-top: 34rpx;
+  width: 100%;
+  height: 96rpx;
+  background-color: #FFFFFF;
+  -webkit-box-shadow: 0rpx 0rpx 20rpx 0rpx rgba(0, 0, 0, 0.05);
+          box-shadow: 0rpx 0rpx 20rpx 0rpx rgba(0, 0, 0, 0.05);
+  -webkit-border-radius: 8px;
+          border-radius: 8px;
+  font-size: 24rpx;
+  font-weight: 400;
+}
+.member .face {
+  position: absolute;
+  width: 70rpx;
+  height: 70rpx;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  top: 14rpx;
+  left: 20rpx;
+}
+.member .member_name {
+  position: absolute;
+  top: 32rpx;
+  left: 106rpx;
+  color: #222222;
+}
+.member .show_member {
+  position: absolute;
+  top: 32rpx;
+  right: 20rpx;
+  color: #808080;
+}
+.member .show_member image {
+  width: 10rpx;
+  height: 20rpx;
+  margin-left: 8rpx;
+}
+.dsyx {
+  margin-top: 40rpx;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+.dsyx .title {
+  margin-bottom: 28rpx;
+}
+.dsyx .title .title_image {
+  width: 150rpx;
+  height: 46rpx;
+}
+.dsyx .item {
+  float: left;
+  margin-right: 8rpx;
+  margin-bottom: 10rpx;
+  width: 326rpx;
+  height: 226rpx;
+  background-color: #FFFFFF;
+  -webkit-border-radius: 14rpx;
+          border-radius: 14rpx;
+  overflow: hidden;
+  -webkit-box-shadow: 0rpx 0rpx 20rpx 0rpx rgba(0, 0, 0, 0.05);
+          box-shadow: 0rpx 0rpx 20rpx 0rpx rgba(0, 0, 0, 0.05);
+}
+.dsyx .item image {
+  width: 100%;
+  height: 176rpx;
+}
+.dsyx .item text {
+  font-size: 24rpx;
+}
+.dsyx .item .car_name {
+  float: left;
+  margin-left: 12rpx;
+}
+.dsyx .item .car_price {
+  float: right;
+  margin-right: 12rpx;
+}
+.yhzq {
+  margin-top: 30rpx;
+  width: 100%;
+  height: auto;
+}
+.yhzq .title .title_image {
+  float: left;
+  width: 150rpx;
+  height: 46rpx;
+}
+.yhzq .title .more {
+  font-size: 24rpx;
+  color: #808080;
+  margin-left: 595rpx;
+  padding-top: 10rpx;
+}
+.yhzq .title .more image {
+  width: 10rpx;
+  height: 20rpx;
+  margin-left: 8rpx;
+}
+.yhzq .list {
+  width: 100%;
+  overflow: hidden;
+  margin-top: 28rpx;
+}
+.yhzq .list .item image {
+  float: left;
+  -webkit-border-radius: 16rpx;
+          border-radius: 16rpx;
+  width: 332rpx;
+  height: 180rpx;
+  -webkit-box-shadow: 0rpx 0rpx 20rpx 0rpx rgba(0, 0, 0, 0.05);
+          box-shadow: 0rpx 0rpx 20rpx 0rpx rgba(0, 0, 0, 0.05);
+}
+.yhzq .list .item .img1 {
+  width: 318rpx;
+  height: 380rpx;
+}
+.yhzq .list .item .img2 {
+  margin-left: 12rpx;
+}
+.yhzq .list .item .img3 {
+  margin-top: 20rpx;
+  margin-left: 12rpx;
+}
+.foo_img {
+  margin-top: 40rpx;
+}
+.foo_img image {
+  width: 100%;
+  height: 300rpx;
+}
+.foo_img .hr_box {
+  height: 1rpx;
+  width: 528rpx;
+  border-bottom: 1rpx solid #979797;
+  margin: 34rpx auto;
+}
+.footer_kefu {
+  text-align: center;
+  color: #B8966C;
+  margin-bottom: 40rpx;
+  text-decoration: underline;
+}
+

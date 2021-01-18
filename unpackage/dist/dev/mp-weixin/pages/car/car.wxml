@@ -1,0 +1,1 @@
+<view class="main"><view class="content"><view class="search"><image class="icon" src="../../static/img/search.jpg"></image><input type="text" name="search" placeholder="输入您喜欢的车型或关键字"/></view></view></view>
