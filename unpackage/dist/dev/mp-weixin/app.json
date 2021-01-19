@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/car/car",
     "pages/consult/consult",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/car/detail"
   ],
   "subPackages": [],
   "window": {
@@ -41,6 +42,5 @@
       }
     ]
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap74.json"
+  "usingComponents": {}
 }

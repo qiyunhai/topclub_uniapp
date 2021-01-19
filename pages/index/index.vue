@@ -143,10 +143,7 @@
 			line-height: 28rpx;
 			font-size: 20rpx;
 			font-weight: 400;
-			// #ifdef H5
-			padding-top: 10rpx;
-			// #endif
-			// #ifdef APP-PLUS
+			// #ifdef H5 || APP-PLUS
 			padding-top: 10rpx;
 			// #endif
 		}

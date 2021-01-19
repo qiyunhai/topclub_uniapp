@@ -1,0 +1,448 @@
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.main {
+  background-color: #F7F7F7;
+  width: 100%;
+  height: auto;
+}
+.banner {
+  width: 100%;
+  height: 384rpx;
+}
+.banner swiper {
+  width: 100%;
+  height: 100%;
+}
+.banner swiper image {
+  width: 100%;
+  height: 384rpx;
+}
+.banner .banner_page {
+  position: absolute;
+  width: 80rpx;
+  height: 36rpx;
+  background-color: #000000;
+  -webkit-border-radius: 18rpx;
+          border-radius: 18rpx;
+  opacity: 0.5;
+  top: 328rpx;
+  right: 30rpx;
+  color: #FFFFFF;
+  font-size: 20rpx;
+  line-height: 36rpx;
+  text-align: center;
+}
+.banner .star {
+  position: absolute;
+  top: 30rpx;
+  right: 30rpx;
+}
+.banner .star image {
+  width: 70rpx;
+  height: 70rpx;
+}
+.car_info {
+  background-color: #FFFFFF;
+}
+.car_info .price {
+  float: left;
+  font-size: 28rpx;
+  color: #BFA077;
+  font-weight: 600;
+  margin-top: 30rpx;
+  margin-left: 40rpx;
+}
+.car_info .original_price {
+  float: left;
+  font-size: 20rpx;
+  color: #808080;
+  margin-top: 40rpx;
+  margin-left: 12rpx;
+  text-decoration: line-through;
+}
+.car_info .title {
+  clear: both;
+  font-size: 36rpx;
+  color: #393D59;
+  padding-top: 14rpx;
+  margin-left: 40rpx;
+  font-weight: 500;
+}
+.car_info .introduce {
+  width: 670rpx;
+  font-size: 20rpx;
+  color: #808080;
+  padding-top: 12rpx;
+  margin-left: 40rpx;
+}
+.car_info .hr_box {
+  width: 670rpx;
+  height: 30rpx;
+  margin: 0 auto;
+  border-bottom: 1rpx solid #F7F7F7;
+}
+.car_info .specs {
+  margin: 0 auto;
+  width: 670rpx;
+  height: 94rpx;
+}
+.car_info .specs .item1 {
+  float: left;
+  margin-top: 30rpx;
+}
+.car_info .specs .item1 image {
+  width: 40rpx;
+  height: 20rpx;
+}
+.car_info .specs .item2 {
+  float: left;
+  margin-top: 30rpx;
+}
+.car_info .specs .item2 image {
+  margin-left: 48rpx;
+  width: 30rpx;
+  height: 24rpx;
+}
+.car_info .specs .item3 {
+  float: left;
+  margin-top: 30rpx;
+}
+.car_info .specs .item3 image {
+  margin-left: 48rpx;
+  width: 28rpx;
+  height: 28rpx;
+}
+.car_info .specs .specs_item {
+  margin-left: 12rpx;
+  color: #393B5B;
+}
+.item_box {
+  margin-top: 18rpx;
+  background-color: #FFFFFF;
+  width: 100%;
+  overflow: hidden;
+}
+.item_box .box_title {
+  font-size: 32rpx;
+  color: #393D59;
+  font-weight: 500;
+  padding-top: 40rpx;
+  padding-left: 40rpx;
+}
+.item_box .yhlist {
+  font-size: 24rpx;
+  margin-top: 20rpx;
+}
+.item_box .yhlist view {
+  position: relative;
+  margin-left: 72rpx;
+  margin-bottom: 12rpx;
+}
+.item_box .yhlist view::before {
+  position: absolute;
+  content: '';
+  width: 12rpx;
+  height: 12rpx;
+  background-color: #BFA077;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  margin-top: 10rpx;
+  left: -30rpx;
+}
+.item_box .yhlist text {
+  color: #BFA077;
+}
+.item_box .yhitem {
+  margin-top: 18rpx;
+}
+.item_box .yhitem .item {
+  width: 670rpx;
+  height: 94rpx;
+  line-height: 94rpx;
+  border-top: 1rpx solid #F7F7F7;
+  margin: 0 auto;
+}
+.item_box .yhitem .item .icon {
+  float: left;
+  width: 30rpx;
+  height: 30rpx;
+  margin-top: 32rpx;
+}
+.item_box .yhitem .item view {
+  float: left;
+  margin-left: 20rpx;
+  color: #393D59;
+  font-size: 24rpx;
+}
+.item_box .yhitem .item .show {
+  float: right;
+  margin-top: 40rpx;
+  width: 12rpx;
+  height: 18rpx;
+}
+.item_box .pzlist {
+  margin-top: 40rpx;
+  margin-left: 60rpx;
+}
+.item_box .pzlist .item {
+  float: left;
+  width: 160rpx;
+  margin-right: 70rpx;
+  margin-bottom: 30rpx;
+  height: 144rpx;
+  text-align: center;
+}
+.item_box .pzlist .item image {
+  width: 90rpx;
+  height: 90rpx;
+}
+.item_box .pzlist .item view {
+  color: #393D59;
+  margin-top: 8rpx;
+}
+.item_box .lccontent {
+  margin: 20rpx 0rpx 40rpx 40rpx;
+}
+.item_box .lccontent image {
+  width: 602rpx;
+  height: 332rpx;
+}
+.item_box .content {
+  width: 670rpx;
+  margin: 0 auto;
+}
+.item_box .content .face {
+  float: left;
+  margin-top: 40rpx;
+  width: 92rpx;
+  height: 92rpx;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+}
+.item_box .content .gtitle {
+  float: left;
+  margin-top: 48rpx;
+  margin-left: 20rpx;
+  color: #393D59;
+  font-size: 28rpx;
+}
+.item_box .content .ginfo {
+  float: left;
+  color: #393D59;
+  font-size: 20rpx;
+  margin-top: 8rpx;
+  margin-left: 20rpx;
+}
+.item_box .content .icon {
+  float: right;
+  width: 12rpx;
+  height: 18rpx;
+}
+.item_box .content .xy {
+  float: left;
+  margin-top: 32rpx;
+  width: 100%;
+  height: 98rpx;
+  line-height: 98rpx;
+  font-size: 20rpx;
+  border-top: 1rpx solid #F7F7F7;
+  padding-bottom: 98rpx;
+}
+.item_box .content .xy checkbox {
+  float: left;
+  margin-top: -3rpx;
+}
+.item_box .content .xy view {
+  float: left;
+}
+.item_box .content .xy view .a {
+  color: #BFA077;
+}
+.item_box .footer {
+  position: fixed;
+  z-index: 100;
+  bottom: 0rpx;
+  clear: both;
+  width: 100%;
+  border-top: 1rpx solid #F7F7F7;
+}
+.item_box .footer .lv {
+  float: left;
+  width: 65.87%;
+  height: 98rpx;
+  background-color: #FFFFFF;
+}
+.item_box .footer .lv .price {
+  color: #BFA077;
+  font-size: 36rpx;
+  margin-top: 8rpx;
+  margin-left: 40rpx;
+}
+.item_box .footer .lv .info {
+  color: #808080;
+  font-size: 20rpx;
+  margin-left: 46rpx;
+}
+.item_box .footer .rv {
+  float: left;
+  width: 34.13%;
+  height: 98rpx;
+  background-color: #BFA077;
+}
+.item_box .footer .rv image {
+  width: 118rpx;
+  height: 42rpx;
+  margin-top: 28rpx;
+  margin-left: 70rpx;
+}
+.mengban {
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vh;
+  height: 100vh;
+}
+.all {
+  z-index: 999;
+}
+.xieyi {
+  position: fixed;
+  z-index: 100;
+  bottom: 98rpx;
+  width: 100%;
+  height: 696rpx;
+  background-color: #FFFFFF;
+  -webkit-border-radius: 16rpx 16rpx 0rpx 0rpx;
+          border-radius: 16rpx 16rpx 0rpx 0rpx;
+}
+.xieyi .xytitle {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #393D59;
+  margin-top: 40rpx;
+  margin-left: 36rpx;
+  margin-bottom: 16rpx;
+}
+.xieyi .item {
+  float: left;
+  margin-top: 12rpx;
+  margin-left: 40rpx;
+}
+.xieyi .item .title {
+  float: left;
+  font-size: 24rpx;
+  color: #808080;
+  font-weight: 600;
+}
+.xieyi .item text {
+  float: left;
+  font-size: 24rpx;
+  color: #BFA077;
+  font-weight: 600;
+  margin-left: 8rpx;
+}
+.xieyi .item .introduce {
+  clear: both;
+  font-size: 24rpx;
+  color: #808080;
+}
+.auth_box {
+  width: 670rpx;
+  height: 320rpx;
+  background-color: #FFFFFF;
+  -webkit-border-radius: 16rpx;
+          border-radius: 16rpx;
+  margin-left: 40rpx;
+  margin-top: 586rpx;
+}
+.auth_box .title {
+  font-size: 32rpx;
+  color: #393D59;
+  font-weight: 600;
+  padding-top: 40rpx;
+  text-align: center;
+}
+.auth_box .introduce {
+  font-size: 24rpx;
+  color: #393D59;
+  padding-top: 40rpx;
+  text-align: center;
+}
+.auth_box .btn {
+  width: 518rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background-color: #BFA077;
+  margin-top: 52rpx;
+  margin-left: 76rpx;
+  -webkit-border-radius: 40rpx;
+          border-radius: 40rpx;
+  text-align: center;
+  color: #FFFFFF;
+  font-size: 28rpx;
+}
+ checkbox .uni-checkbox-input {
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  width: 22rpx;
+  height: 22rpx;
+  border-color: #979797;
+}
+ checkbox .uni-checkbox-input.uni-checkbox-input-checked {
+  background: #BFA077;
+  border-color: #979797;
+}
+ checkbox .uni-checkbox-input.uni-checkbox-input-checked::before {
+  color: #FFFFFF;
+  width: 26rpx;
+  height: 26rpx;
+  line-height: 26rpx;
+  text-align: center;
+  font-size: 18rpx;
+}
+ checkbox .wx-checkbox-input {
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  width: 22rpx;
+  height: 22rpx;
+  border-color: #979797;
+}
+ checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  background: #BFA077;
+  border-color: #979797;
+}
+ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  color: #FFFFFF;
+  width: 26rpx;
+  height: 26rpx;
+  line-height: 26rpx;
+  text-align: center;
+  font-size: 18rpx;
+}
+
