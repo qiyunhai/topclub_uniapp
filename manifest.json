@@ -1,7 +1,7 @@
 {
-    "name" : "topclub_uniapp",
-    "appid" : "",
-    "description" : "",
+    "name" : "topclub",
+    "appid" : "__UNI__BC6CB70",
+    "description" : "topclub_uniapp",
     "versionName" : "1.0.0",
     "versionCode" : "100",
     "transformPx" : false,
@@ -50,7 +50,10 @@
             /* ios打包配置 */
             "ios" : {},
             /* SDK配置 */
-            "sdkConfigs" : {}
+            "sdkConfigs" : {},
+            "splashscreen" : {
+                "androidStyle" : "common"
+            }
         }
     },
     /* 快应用特有相关 */
@@ -75,17 +78,16 @@
     "uniStatistics" : {
         "enable" : false
     },
-	"h5" : {
-	      "devServer": {
-	          "port": 8080,
-	          "historyApiFallback": true,
-	          "host": "0.0.0.0",
-	          "disableHostCheck": true,
-	          "noInfo": true
-	      },
-	 
-	      "router":{  
-	        "mode":"history"  
-	      }  
-	}
+    "h5" : {
+        "devServer" : {
+            "port" : 8080,
+            "historyApiFallback" : true,
+            "host" : "0.0.0.0",
+            "disableHostCheck" : true,
+            "noInfo" : true
+        },
+        "router" : {
+            "mode" : "history"
+        }
+    }
 }
