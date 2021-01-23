@@ -1362,7 +1362,18 @@ var render = function() {
             [
               _c(
                 "v-uni-swiper",
-                { attrs: { duration: 1000, _i: 9 } },
+                {
+                  attrs: {
+                    duration: 1000,
+                    current: _vm._$g(9, "a-current"),
+                    _i: 9
+                  },
+                  on: {
+                    change: function($event) {
+                      return _vm.$handleViewEvent($event)
+                    }
+                  }
+                },
                 [
                   _c(
                     "v-uni-swiper-item",
@@ -2707,7 +2718,284 @@ var render = function() {
       ),
       _c("v-uni-view", { staticClass: _vm._$g(33, "sc"), attrs: { _i: 33 } }, [
         _vm._v("客服24小时服务热线：185 1888 8088")
-      ])
+      ]),
+      _c("v-uni-view", {
+        staticClass: _vm._$g(34, "sc"),
+        style: _vm._$g(34, "s"),
+        attrs: { _i: 34 }
+      }),
+      _c(
+        "v-uni-view",
+        {
+          staticClass: _vm._$g(35, "sc"),
+          style: _vm._$g(35, "s"),
+          attrs: { _i: 35 }
+        },
+        [
+          _c("v-uni-image", {
+            staticClass: _vm._$g(36, "sc"),
+            attrs: { src: _vm._$g(36, "a-src"), _i: 36 },
+            on: {
+              click: function($event) {
+                return _vm.$handleViewEvent($event)
+              }
+            }
+          }),
+          _c(
+            "v-uni-view",
+            { staticClass: _vm._$g(37, "sc"), attrs: { _i: 37 } },
+            [_vm._v("还没有注册？立即注册")]
+          ),
+          _c("v-uni-image", {
+            staticClass: _vm._$g(38, "sc"),
+            attrs: { src: _vm._$g(38, "a-src"), _i: 38 }
+          }),
+          _c(
+            "v-uni-view",
+            { staticClass: _vm._$g(39, "sc"), attrs: { _i: 39 } },
+            [
+              _c(
+                "v-uni-view",
+                {
+                  class: _vm._$g(40, "c"),
+                  attrs: { _i: 40 },
+                  on: {
+                    click: function($event) {
+                      return _vm.$handleViewEvent($event)
+                    }
+                  }
+                },
+                [_vm._v("密码登录")]
+              ),
+              _c(
+                "v-uni-view",
+                {
+                  class: _vm._$g(41, "c"),
+                  attrs: { _i: 41 },
+                  on: {
+                    click: function($event) {
+                      return _vm.$handleViewEvent($event)
+                    }
+                  }
+                },
+                [_vm._v("验证码登录")]
+              )
+            ],
+            1
+          ),
+          _c(
+            "v-uni-swiper",
+            {
+              staticClass: _vm._$g(42, "sc"),
+              attrs: {
+                current: _vm._$g(42, "a-current"),
+                duration: 500,
+                _i: 42
+              },
+              on: {
+                change: function($event) {
+                  return _vm.$handleViewEvent($event)
+                }
+              }
+            },
+            [
+              _c(
+                "v-uni-swiper-item",
+                { attrs: { _i: 43 } },
+                [
+                  _c(
+                    "v-uni-view",
+                    { staticClass: _vm._$g(44, "sc"), attrs: { _i: 44 } },
+                    [
+                      _c(
+                        "v-uni-view",
+                        { staticClass: _vm._$g(45, "sc"), attrs: { _i: 45 } },
+                        [
+                          _c(
+                            "v-uni-view",
+                            {
+                              staticClass: _vm._$g(46, "sc"),
+                              attrs: { _i: 46 }
+                            },
+                            [
+                              _c("v-uni-text", { attrs: { _i: 47 } }, [
+                                _vm._v("+86")
+                              ]),
+                              _c("v-uni-image", {
+                                attrs: { src: _vm._$g(48, "a-src"), _i: 48 }
+                              })
+                            ],
+                            1
+                          ),
+                          _c("v-uni-input", {
+                            attrs: {
+                              type: "text",
+                              placeholder: "请输入手机号",
+                              _i: 49
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _c(
+                        "v-uni-view",
+                        { staticClass: _vm._$g(50, "sc"), attrs: { _i: 50 } },
+                        [
+                          _c(
+                            "v-uni-view",
+                            {
+                              staticClass: _vm._$g(51, "sc"),
+                              attrs: { _i: 51 }
+                            },
+                            [_vm._v("密码")]
+                          ),
+                          _c("v-uni-input", {
+                            attrs: {
+                              type: "password",
+                              placeholder: "请输入密码",
+                              _i: 52
+                            }
+                          }),
+                          _c("v-uni-image", {
+                            staticClass: _vm._$g(53, "sc"),
+                            attrs: { src: _vm._$g(53, "a-src"), _i: 53 }
+                          })
+                        ],
+                        1
+                      ),
+                      _c(
+                        "v-uni-view",
+                        { staticClass: _vm._$g(54, "sc"), attrs: { _i: 54 } },
+                        [
+                          _c("v-uni-checkbox", {
+                            attrs: { value: "", _i: 55 }
+                          }),
+                          _c(
+                            "v-uni-view",
+                            {
+                              staticClass: _vm._$g(56, "sc"),
+                              attrs: { _i: 56 }
+                            },
+                            [_vm._v("记住密码")]
+                          ),
+                          _c(
+                            "v-uni-view",
+                            {
+                              staticClass: _vm._$g(57, "sc"),
+                              attrs: { _i: 57 }
+                            },
+                            [_vm._v("忘记密码")]
+                          )
+                        ],
+                        1
+                      ),
+                      _c(
+                        "v-uni-view",
+                        { staticClass: _vm._$g(58, "sc"), attrs: { _i: 58 } },
+                        [_vm._v("登录")]
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _c(
+                "v-uni-swiper-item",
+                { attrs: { _i: 59 } },
+                [
+                  _c(
+                    "v-uni-view",
+                    { staticClass: _vm._$g(60, "sc"), attrs: { _i: 60 } },
+                    [
+                      _c(
+                        "v-uni-view",
+                        { staticClass: _vm._$g(61, "sc"), attrs: { _i: 61 } },
+                        [
+                          _c(
+                            "v-uni-view",
+                            {
+                              staticClass: _vm._$g(62, "sc"),
+                              attrs: { _i: 62 }
+                            },
+                            [
+                              _c("v-uni-text", { attrs: { _i: 63 } }, [
+                                _vm._v("+86")
+                              ]),
+                              _c("v-uni-image", {
+                                attrs: { src: _vm._$g(64, "a-src"), _i: 64 }
+                              })
+                            ],
+                            1
+                          ),
+                          _c("v-uni-input", {
+                            attrs: {
+                              type: "text",
+                              placeholder: "请输入手机号",
+                              _i: 65
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _c(
+                        "v-uni-view",
+                        { staticClass: _vm._$g(66, "sc"), attrs: { _i: 66 } },
+                        [
+                          _c(
+                            "v-uni-view",
+                            {
+                              staticClass: _vm._$g(67, "sc"),
+                              attrs: { _i: 67 }
+                            },
+                            [_vm._v("验证码")]
+                          ),
+                          _c("v-uni-input", {
+                            attrs: {
+                              type: "text",
+                              placeholder: "请输入验证码",
+                              _i: 68
+                            }
+                          }),
+                          _c(
+                            "v-uni-view",
+                            {
+                              staticClass: _vm._$g(69, "sc"),
+                              attrs: { _i: 69 }
+                            },
+                            [_vm._v("获取验证码")]
+                          )
+                        ],
+                        1
+                      ),
+                      _c(
+                        "v-uni-view",
+                        { staticClass: _vm._$g(70, "sc"), attrs: { _i: 70 } },
+                        [_vm._v("登录")]
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _c(
+            "v-uni-view",
+            { staticClass: _vm._$g(71, "sc"), attrs: { _i: 71 } },
+            [
+              _vm._v("登录代表您已同意"),
+              _c("v-uni-text", { attrs: { _i: 72 } }, [_vm._v("《服务协议》")]),
+              _vm._v("和"),
+              _c("v-uni-text", { attrs: { _i: 73 } }, [_vm._v("《隐私政策》")])
+            ],
+            1
+          )
+        ],
+        1
+      )
     ],
     1
   )
@@ -2800,7 +3088,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ./node_modules/css-loader/dist/runtime/api.js */ 10);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "@charset \"UTF-8\";\r\n/**\r\n * 这里是uni-app内置的常用样式变量\r\n *\r\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\r\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\r\n *\r\n */\r\n/**\r\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\r\n *\r\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\r\n */\r\n/* 颜色变量 */\r\n/* 行为相关颜色 */\r\n/* 文字基本颜色 */\r\n/* 背景颜色 */\r\n/* 边框颜色 */\r\n/* 尺寸变量 */\r\n/* 文字尺寸 */\r\n/* 图片尺寸 */\r\n/* Border Radius */\r\n/* 水平间距 */\r\n/* 垂直间距 */\r\n/* 透明度 */\r\n/* 文章场景相关 */\n.module1 {\r\n  padding-bottom: 430rpx;\n}\n.module1 .background {\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  width: 100%;\r\n  height: 430rpx;\n}\n.module1 .head {\r\n  position: absolute;\r\n  width: 136rpx;\r\n  height: 136rpx;\r\n  -webkit-border-radius: 50%;\r\n          border-radius: 50%;\r\n  margin-left: 40rpx;\r\n  margin-top: 61.12rpx;\n}\n.module1 .name {\r\n  position: absolute;\r\n  color: #222222;\r\n  font-size: 32rpx;\r\n  margin-top: 86rpx;\r\n  margin-left: 216rpx;\n}\n.module1 .phone {\r\n  position: absolute;\r\n  color: #222222;\r\n  font-size: 24rpx;\r\n  margin-top: 134rpx;\r\n  margin-left: 216rpx;\n}\n.module1 .v {\r\n  position: absolute;\r\n  width: 42rpx;\r\n  height: 42rpx;\r\n  margin-top: 86rpx;\r\n  margin-left: 402rpx;\n}\n.module1 .xiaoxi {\r\n  position: absolute;\r\n  width: 44rpx;\r\n  height: 72rpx;\r\n  margin-top: 42rpx;\r\n  margin-left: 604rpx;\n}\n.module1 .shezhi {\r\n  position: absolute;\r\n  width: 44rpx;\r\n  height: 72rpx;\r\n  margin-top: 42rpx;\r\n  margin-left: 668rpx;\n}\n.module1 .progress_value {\r\n  position: absolute;\r\n  margin-top: 262rpx;\r\n  margin-left: 240rpx;\r\n  font-size: 20rpx;\n}\n.module1 .progress_value uni-text {\r\n  color: #E6782E;\n}\n.module1 .progress {\r\n  position: absolute;\r\n  width: 254rpx;\r\n  height: 8rpx;\r\n  background-color: #FFFFFF;\r\n  margin-top: 310rpx;\r\n  margin-left: 92rpx;\r\n  -webkit-border-radius: 4rpx;\r\n          border-radius: 4rpx;\r\n  overflow: hidden;\n}\n.module1 .progress .val {\r\n  height: 100%;\r\n  background-color: #222222;\n}\n.module1 .show_member {\r\n  position: absolute;\r\n  color: #808080;\r\n  margin-top: 254rpx;\r\n  margin-left: 566rpx;\r\n  font-size: 20rpx;\n}\n.module1 .show_member uni-image {\r\n  width: 8rpx;\r\n  height: 16rpx;\r\n  margin-left: 4rpx;\n}\n.module2 {\r\n  position: relative;\r\n  width: 100%;\r\n  height: 264rpx;\r\n  border-bottom: 16rpx solid #EEEEEE;\n}\n.module2 .box {\r\n  position: absolute;\r\n  width: 670rpx;\r\n  height: 188rpx;\r\n  -webkit-border-radius: 16rpx;\r\n          border-radius: 16rpx;\r\n  -webkit-box-shadow: 0rpx 0rpx 16rpx 0rpx rgba(0, 0, 0, 0.1);\r\n          box-shadow: 0rpx 0rpx 16rpx 0rpx rgba(0, 0, 0, 0.1);\r\n  margin-top: 36rpx;\r\n  margin-left: 40rpx;\n}\n.module2 .box uni-image {\r\n  float: left;\r\n  width: 128rpx;\r\n  height: 136rpx;\r\n  margin-top: 26rpx;\r\n  margin-left: 100rpx;\n}\n.module2 .box uni-image:nth-child(1) {\r\n  margin-left: 44rpx;\n}\n.module3 {\r\n  margin: 0 auto;\r\n  margin-top: 40rpx;\r\n  width: 670rpx;\r\n  height: 192rpx;\r\n  -webkit-border-radius: 16rpx;\r\n          border-radius: 16rpx;\r\n  -webkit-box-shadow: 0rpx 0rpx 16rpx 0rpx rgba(0, 0, 0, 0.1);\r\n          box-shadow: 0rpx 0rpx 16rpx 0rpx rgba(0, 0, 0, 0.1);\n}\n.module3 .title {\r\n  font-size: 28rpx;\r\n  font-weight: 500;\r\n  padding-top: 16rpx;\r\n  margin-left: 20rpx;\n}\n.module3 uni-image {\r\n  float: left;\r\n  width: 96rpx;\r\n  height: 94rpx;\r\n  margin-top: 22rpx;\n}\n.module3 .zxkf {\r\n  margin-left: 72rpx;\n}\n.module3 .cjwt {\r\n  margin-left: 118rpx;\n}\n.module3 .sccx {\r\n  margin-left: 120rpx;\n}\n.module3 .list {\r\n  clear: both;\r\n  padding-top: 60rpx;\n}\n.module3 .list .item {\r\n  width: 100%;\r\n  height: 34rpx;\r\n  margin-bottom: 60rpx;\n}\n.module3 .list .item uni-view {\r\n  margin-top: 18rpx;\r\n  float: left;\r\n  font-size: 24rpx;\n}\n.module3 .list .item uni-image {\r\n  float: right;\r\n  width: 14rpx;\r\n  height: 24rpx;\n}\n.module4 {\r\n  position: absolute;\r\n  bottom: 22rpx;\r\n  left: 170rpx;\r\n  font-size: 24rpx;\r\n  color: #B8966C;\r\n  text-decoration: underline;\n}\r\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\r\n/**\r\n * 这里是uni-app内置的常用样式变量\r\n *\r\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\r\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\r\n *\r\n */\r\n/**\r\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\r\n *\r\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\r\n */\r\n/* 颜色变量 */\r\n/* 行为相关颜色 */\r\n/* 文字基本颜色 */\r\n/* 背景颜色 */\r\n/* 边框颜色 */\r\n/* 尺寸变量 */\r\n/* 文字尺寸 */\r\n/* 图片尺寸 */\r\n/* Border Radius */\r\n/* 水平间距 */\r\n/* 垂直间距 */\r\n/* 透明度 */\r\n/* 文章场景相关 */\n.module1 {\r\n  padding-bottom: 430rpx;\n}\n.module1 .background {\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  width: 100%;\r\n  height: 430rpx;\n}\n.module1 .head {\r\n  position: absolute;\r\n  width: 136rpx;\r\n  height: 136rpx;\r\n  -webkit-border-radius: 50%;\r\n          border-radius: 50%;\r\n  margin-left: 40rpx;\r\n  margin-top: 61.12rpx;\n}\n.module1 .name {\r\n  position: absolute;\r\n  color: #222222;\r\n  font-size: 32rpx;\r\n  margin-top: 86rpx;\r\n  margin-left: 216rpx;\n}\n.module1 .phone {\r\n  position: absolute;\r\n  color: #222222;\r\n  font-size: 24rpx;\r\n  margin-top: 134rpx;\r\n  margin-left: 216rpx;\n}\n.module1 .v {\r\n  position: absolute;\r\n  width: 42rpx;\r\n  height: 42rpx;\r\n  margin-top: 86rpx;\r\n  margin-left: 402rpx;\n}\n.module1 .xiaoxi {\r\n  position: absolute;\r\n  width: 44rpx;\r\n  height: 72rpx;\r\n  margin-top: 42rpx;\r\n  margin-left: 604rpx;\n}\n.module1 .shezhi {\r\n  position: absolute;\r\n  width: 44rpx;\r\n  height: 72rpx;\r\n  margin-top: 42rpx;\r\n  margin-left: 668rpx;\n}\n.module1 .progress_value {\r\n  position: absolute;\r\n  margin-top: 262rpx;\r\n  margin-left: 240rpx;\r\n  font-size: 20rpx;\n}\n.module1 .progress_value uni-text {\r\n  color: #E6782E;\n}\n.module1 .progress {\r\n  position: absolute;\r\n  width: 254rpx;\r\n  height: 8rpx;\r\n  background-color: #FFFFFF;\r\n  margin-top: 310rpx;\r\n  margin-left: 92rpx;\r\n  -webkit-border-radius: 4rpx;\r\n          border-radius: 4rpx;\r\n  overflow: hidden;\n}\n.module1 .progress .val {\r\n  height: 100%;\r\n  background-color: #222222;\n}\n.module1 .show_member {\r\n  position: absolute;\r\n  color: #808080;\r\n  margin-top: 254rpx;\r\n  margin-left: 566rpx;\r\n  font-size: 20rpx;\n}\n.module1 .show_member uni-image {\r\n  width: 8rpx;\r\n  height: 16rpx;\r\n  margin-left: 4rpx;\n}\n.module2 {\r\n  position: relative;\r\n  width: 100%;\r\n  height: 264rpx;\r\n  border-bottom: 16rpx solid #EEEEEE;\n}\n.module2 .box {\r\n  position: absolute;\r\n  width: 670rpx;\r\n  height: 188rpx;\r\n  -webkit-border-radius: 16rpx;\r\n          border-radius: 16rpx;\r\n  -webkit-box-shadow: 0rpx 0rpx 16rpx 0rpx rgba(0, 0, 0, 0.1);\r\n          box-shadow: 0rpx 0rpx 16rpx 0rpx rgba(0, 0, 0, 0.1);\r\n  margin-top: 36rpx;\r\n  margin-left: 40rpx;\n}\n.module2 .box uni-image {\r\n  float: left;\r\n  width: 128rpx;\r\n  height: 136rpx;\r\n  margin-top: 26rpx;\r\n  margin-left: 100rpx;\n}\n.module2 .box uni-image:nth-child(1) {\r\n  margin-left: 44rpx;\n}\n.module3 {\r\n  margin: 0 auto;\r\n  margin-top: 40rpx;\r\n  width: 670rpx;\r\n  height: 192rpx;\r\n  -webkit-border-radius: 16rpx;\r\n          border-radius: 16rpx;\r\n  -webkit-box-shadow: 0rpx 0rpx 16rpx 0rpx rgba(0, 0, 0, 0.1);\r\n          box-shadow: 0rpx 0rpx 16rpx 0rpx rgba(0, 0, 0, 0.1);\n}\n.module3 .title {\r\n  font-size: 28rpx;\r\n  font-weight: 500;\r\n  padding-top: 16rpx;\r\n  margin-left: 20rpx;\n}\n.module3 uni-image {\r\n  float: left;\r\n  width: 96rpx;\r\n  height: 94rpx;\r\n  margin-top: 22rpx;\n}\n.module3 .zxkf {\r\n  margin-left: 72rpx;\n}\n.module3 .cjwt {\r\n  margin-left: 118rpx;\n}\n.module3 .sccx {\r\n  margin-left: 120rpx;\n}\n.module3 .list {\r\n  clear: both;\r\n  padding-top: 60rpx;\n}\n.module3 .list .item {\r\n  width: 100%;\r\n  height: 34rpx;\r\n  margin-bottom: 60rpx;\n}\n.module3 .list .item uni-view {\r\n  margin-top: 18rpx;\r\n  float: left;\r\n  font-size: 24rpx;\n}\n.module3 .list .item uni-image {\r\n  float: right;\r\n  width: 14rpx;\r\n  height: 24rpx;\n}\n.module4 {\r\n  position: absolute;\r\n  bottom: 22rpx;\r\n  left: 170rpx;\r\n  font-size: 24rpx;\r\n  color: #B8966C;\r\n  text-decoration: underline;\n}\n.mengban {\r\n  position: absolute;\r\n  z-index: 2;\r\n  top: 0rpx;\r\n  left: 0rpx;\r\n  width: 100vh;\r\n  height: 100vh;\r\n  background-color: rgba(0, 0, 0, 0.49);\n}\n.login_box {\r\n  position: fixed;\r\n  z-index: 3;\r\n  bottom: 0rpx;\r\n  width: 100%;\r\n  height: 978rpx;\r\n  background-color: #FFFFFF;\r\n  -webkit-border-radius: 40rpx 40rpx 0rpx 0rpx;\r\n          border-radius: 40rpx 40rpx 0rpx 0rpx;\n}\n.login_box .close {\r\n  float: left;\r\n  width: 40rpx;\r\n  height: 40rpx;\r\n  margin-top: 40rpx;\r\n  margin-left: 40rpx;\n}\n.login_box .register {\r\n  color: #393D59;\r\n  font-size: 28rpx;\r\n  margin-top: 40rpx;\r\n  margin-left: 430rpx;\n}\n.login_box .logo {\r\n  clear: both;\r\n  width: 505.42rpx;\r\n  height: 44rpx;\r\n  margin-top: 76rpx;\r\n  margin-left: 42rpx;\n}\n.login_box .cut_swiper {\r\n  margin-top: 96rpx;\r\n  color: #393D59;\r\n  font-size: 28rpx;\n}\n.login_box .cut_swiper .item {\r\n  float: left;\n}\n.login_box .cut_swiper .item:nth-child(1) {\r\n  margin-left: 198rpx;\r\n  margin-right: 78rpx;\n}\n.login_box .cut_swiper .curr::after {\r\n  position: absolute;\r\n  content: '';\r\n  width: 160rpx;\r\n  height: 4rpx;\r\n  margin-top: 48rpx;\r\n  background-color: #393D59;\n}\n.login_box .cut_swiper .item:nth-child(1).curr::after {\r\n  left: 174rpx;\n}\n.login_box .cut_swiper .item:nth-child(2).curr::after {\r\n  right: 212rpx;\n}\n.login_box .login_swiper {\r\n  height: 450rpx;\n}\n.login_box .login_swiper .swiper-item {\r\n  width: 624rpx;\r\n  margin-top: 40rpx;\r\n  margin-left: 64rpx;\r\n  color: #393D59;\r\n  font-size: 28rpx;\n}\n.login_box .login_swiper .swiper-item .account {\r\n  padding-bottom: 60rpx;\r\n  border-bottom: 2rpx solid #EEEEEE;\n}\n.login_box .login_swiper .swiper-item .account .title uni-text {\r\n  float: left;\r\n  margin-top: 6rpx;\n}\n.login_box .login_swiper .swiper-item .account .title uni-image {\r\n  float: left;\r\n  width: 16rpx;\r\n  height: 10rpx;\r\n  margin-top: 20rpx;\r\n  margin-left: 8rpx;\n}\n.login_box .login_swiper .swiper-item .account uni-input {\r\n  float: left;\r\n  margin-left: 40rpx;\n}\n.login_box .login_swiper .swiper-item .password {\r\n  clear: both;\r\n  padding-bottom: 60rpx;\r\n  border-bottom: 2rpx solid #EEEEEE;\r\n  margin-top: 40rpx;\n}\n.login_box .login_swiper .swiper-item .password .title {\r\n  float: left;\r\n  margin-top: 6rpx;\n}\n.login_box .login_swiper .swiper-item .password uni-input {\r\n  float: left;\r\n  margin-left: 58rpx;\n}\n.login_box .login_swiper .swiper-item .password .icon {\r\n  float: right;\r\n  right: 42rpx;\r\n  width: 20rpx;\r\n  height: 24rpx;\r\n  margin-top: 6rpx;\n}\n.login_box .login_swiper .swiper-item .fun {\r\n  margin-top: 24rpx;\r\n  padding-bottom: 36rpx;\r\n  font-size: 20rpx;\n}\n.login_box .login_swiper .swiper-item .fun uni-checkbox {\r\n  float: left;\n}\n.login_box .login_swiper .swiper-item .fun .remember {\r\n  float: left;\r\n  color: #393D59;\r\n  margin-top: 2rpx;\n}\n.login_box .login_swiper .swiper-item .fun .forget {\r\n  float: right;\r\n  margin-right: 10rpx;\r\n  color: #BFA077;\r\n  margin-top: 2rpx;\n}\n.login_box .login_swiper .swiper-item .phone {\r\n  padding-bottom: 60rpx;\r\n  border-bottom: 2rpx solid #EEEEEE;\n}\n.login_box .login_swiper .swiper-item .phone .title uni-text {\r\n  float: left;\r\n  margin-top: 6rpx;\n}\n.login_box .login_swiper .swiper-item .phone .title uni-image {\r\n  float: left;\r\n  width: 16rpx;\r\n  height: 10rpx;\r\n  margin-top: 20rpx;\r\n  margin-left: 8rpx;\n}\n.login_box .login_swiper .swiper-item .phone uni-input {\r\n  float: left;\r\n  margin-left: 40rpx;\n}\n.login_box .login_swiper .swiper-item .code {\r\n  clear: both;\r\n  border-bottom: 2rpx solid #EEEEEE;\r\n  margin-top: 40rpx;\r\n  padding-bottom: 60rpx;\n}\n.login_box .login_swiper .swiper-item .code .title {\r\n  float: left;\r\n  margin-top: 6rpx;\n}\n.login_box .login_swiper .swiper-item .code uni-input {\r\n  float: left;\r\n  margin-left: 30rpx;\n}\n.login_box .login_swiper .swiper-item .code .get {\r\n  float: left;\r\n  color: #BBBBBB;\r\n  font-size: 24rpx;\r\n  margin-top: 8rpx;\n}\n.login_box .login_swiper .swiper-item .btn {\r\n  clear: both;\r\n  margin-top: 36rpx;\r\n  width: 624rpx;\r\n  height: 92rpx;\r\n  line-height: 92rpx;\r\n  background-color: #F6F7F9;\r\n  color: #808080;\r\n  -webkit-border-radius: 12rpx;\r\n          border-radius: 12rpx;\r\n  text-align: center;\n}\n.login_box .login_swiper .swiper-item .btn.cur {\r\n  background-color: #BFA077;\r\n  color: #FFFFFF;\n}\n.login_box .footer {\r\n  position: absolute;\r\n  bottom: 30rpx;\r\n  color: #808080;\r\n  font-size: 20rpx;\r\n  left: 166rpx;\n}\n.login_box .footer uni-text {\r\n  color: #BFA077;\n}\n uni-checkbox .uni-checkbox-input {\r\n  -webkit-border-radius: 50%;\r\n          border-radius: 50%;\r\n  width: 18rpx;\r\n  height: 18rpx;\r\n  border-color: #979797;\n}\n uni-checkbox .uni-checkbox-input.uni-checkbox-input-checked {\r\n  background: #BFA077;\r\n  border-color: #979797;\n}\n uni-checkbox .uni-checkbox-input.uni-checkbox-input-checked::before {\r\n  color: #FFFFFF;\r\n  width: 26rpx;\r\n  height: 26rpx;\r\n  line-height: 26rpx;\r\n  text-align: center;\r\n  font-size: 18rpx;\n}\n uni-checkbox .wx-checkbox-input {\r\n  -webkit-border-radius: 50%;\r\n          border-radius: 50%;\r\n  width: 18rpx;\r\n  height: 18rpx;\r\n  border-color: #979797;\n}\n uni-checkbox .wx-checkbox-input.wx-checkbox-input-checked {\r\n  background: #BFA077;\r\n  border-color: #979797;\n}\n uni-checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {\r\n  color: #FFFFFF;\r\n  width: 26rpx;\r\n  height: 26rpx;\r\n  line-height: 26rpx;\r\n  text-align: center;\r\n  font-size: 18rpx;\n}\r\n", ""]);
 // Exports
 module.exports = exports;
 

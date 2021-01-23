@@ -10,7 +10,7 @@
 				<image src="../../static/img/shaixuanb.png"></image>
 			</view>
 			<view class="brands">
-				<swiper :duration="1000">
+				<swiper :duration="1000" :current="current" @change="bannerChange">
 					<swiper-item>
 						<view class="swiper-item">
 							<view class="item">
@@ -144,13 +144,18 @@
 	export default {
 		data() {
 			return {
-				types_box: 'none'
+				types_box: 'none',
+				current: 0
 			};
 		},
 		methods: {
 			// 禁止页面滑动
 			moveHandle() {
 				return;
+			},
+			// swiper滑动
+			bannerChange(e) {
+				this.current = e.detail.current
 			},
 			// 控制筛选框显示/隐藏
 			types_box_switch(e) {

@@ -130,7 +130,64 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -181,10 +238,29 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 var _default =
 {
   data: function data() {
-    return {};
+    return {
+      // 登录方式：0=密码登录，1=验证码登录
+      login_current: 0,
+      login_box: 'block' };
 
-
-  } };exports.default = _default;
+  },
+  methods: {
+    onLoad: function onLoad() {
+      uni.hideTabBar();
+    },
+    // 切换登录方式
+    cutSwiper: function cutSwiper(cut) {
+      this.login_current = cut;
+    },
+    loginSwiperChange: function loginSwiperChange(event) {
+      this.login_current = event.detail.current;
+    },
+    // 关闭登录框
+    close_login: function close_login() {
+      this.login_box = 'none';
+      uni.showTabBar();
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

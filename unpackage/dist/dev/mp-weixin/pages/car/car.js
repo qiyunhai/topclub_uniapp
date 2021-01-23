@@ -276,13 +276,18 @@ var _default =
 {
   data: function data() {
     return {
-      types_box: 'none' };
+      types_box: 'none',
+      current: 0 };
 
   },
   methods: {
     // 禁止页面滑动
     moveHandle: function moveHandle() {
       return;
+    },
+    // swiper滑动
+    bannerChange: function bannerChange(e) {
+      this.current = e.detail.current;
     },
     // 控制筛选框显示/隐藏
     types_box_switch: function types_box_switch(e) {

@@ -199,4 +199,241 @@
   color: #B8966C;
   text-decoration: underline;
 }
+.mengban {
+  position: absolute;
+  z-index: 2;
+  top: 0rpx;
+  left: 0rpx;
+  width: 100vh;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.49);
+}
+.login_box {
+  position: fixed;
+  z-index: 3;
+  bottom: 0rpx;
+  width: 100%;
+  height: 978rpx;
+  background-color: #FFFFFF;
+  -webkit-border-radius: 40rpx 40rpx 0rpx 0rpx;
+          border-radius: 40rpx 40rpx 0rpx 0rpx;
+}
+.login_box .close {
+  float: left;
+  width: 40rpx;
+  height: 40rpx;
+  margin-top: 40rpx;
+  margin-left: 40rpx;
+}
+.login_box .register {
+  color: #393D59;
+  font-size: 28rpx;
+  margin-top: 40rpx;
+  margin-left: 430rpx;
+}
+.login_box .logo {
+  clear: both;
+  width: 505.42rpx;
+  height: 44rpx;
+  margin-top: 76rpx;
+  margin-left: 42rpx;
+}
+.login_box .cut_swiper {
+  margin-top: 96rpx;
+  color: #393D59;
+  font-size: 28rpx;
+}
+.login_box .cut_swiper .item {
+  float: left;
+}
+.login_box .cut_swiper .item:nth-child(1) {
+  margin-left: 198rpx;
+  margin-right: 78rpx;
+}
+.login_box .cut_swiper .curr::after {
+  position: absolute;
+  content: '';
+  width: 160rpx;
+  height: 4rpx;
+  margin-top: 48rpx;
+  background-color: #393D59;
+}
+.login_box .cut_swiper .item:nth-child(1).curr::after {
+  left: 174rpx;
+}
+.login_box .cut_swiper .item:nth-child(2).curr::after {
+  right: 212rpx;
+}
+.login_box .login_swiper {
+  height: 450rpx;
+}
+.login_box .login_swiper .swiper-item {
+  width: 624rpx;
+  margin-top: 40rpx;
+  margin-left: 64rpx;
+  color: #393D59;
+  font-size: 28rpx;
+}
+.login_box .login_swiper .swiper-item .account {
+  padding-bottom: 60rpx;
+  border-bottom: 2rpx solid #EEEEEE;
+}
+.login_box .login_swiper .swiper-item .account .title text {
+  float: left;
+  margin-top: 6rpx;
+}
+.login_box .login_swiper .swiper-item .account .title image {
+  float: left;
+  width: 16rpx;
+  height: 10rpx;
+  margin-top: 20rpx;
+  margin-left: 8rpx;
+}
+.login_box .login_swiper .swiper-item .account input {
+  float: left;
+  margin-left: 40rpx;
+}
+.login_box .login_swiper .swiper-item .password {
+  clear: both;
+  padding-bottom: 60rpx;
+  border-bottom: 2rpx solid #EEEEEE;
+  margin-top: 40rpx;
+}
+.login_box .login_swiper .swiper-item .password .title {
+  float: left;
+  margin-top: 6rpx;
+}
+.login_box .login_swiper .swiper-item .password input {
+  float: left;
+  margin-left: 58rpx;
+}
+.login_box .login_swiper .swiper-item .password .icon {
+  float: right;
+  right: 42rpx;
+  width: 20rpx;
+  height: 24rpx;
+  margin-top: 6rpx;
+}
+.login_box .login_swiper .swiper-item .fun {
+  margin-top: 24rpx;
+  padding-bottom: 36rpx;
+  font-size: 20rpx;
+}
+.login_box .login_swiper .swiper-item .fun checkbox {
+  float: left;
+}
+.login_box .login_swiper .swiper-item .fun .remember {
+  float: left;
+  color: #393D59;
+  margin-top: 2rpx;
+}
+.login_box .login_swiper .swiper-item .fun .forget {
+  float: right;
+  margin-right: 10rpx;
+  color: #BFA077;
+  margin-top: 2rpx;
+}
+.login_box .login_swiper .swiper-item .phone {
+  padding-bottom: 60rpx;
+  border-bottom: 2rpx solid #EEEEEE;
+}
+.login_box .login_swiper .swiper-item .phone .title text {
+  float: left;
+  margin-top: 6rpx;
+}
+.login_box .login_swiper .swiper-item .phone .title image {
+  float: left;
+  width: 16rpx;
+  height: 10rpx;
+  margin-top: 20rpx;
+  margin-left: 8rpx;
+}
+.login_box .login_swiper .swiper-item .phone input {
+  float: left;
+  margin-left: 40rpx;
+}
+.login_box .login_swiper .swiper-item .code {
+  clear: both;
+  border-bottom: 2rpx solid #EEEEEE;
+  margin-top: 40rpx;
+  padding-bottom: 60rpx;
+}
+.login_box .login_swiper .swiper-item .code .title {
+  float: left;
+  margin-top: 6rpx;
+}
+.login_box .login_swiper .swiper-item .code input {
+  float: left;
+  margin-left: 30rpx;
+}
+.login_box .login_swiper .swiper-item .code .get {
+  float: left;
+  color: #BBBBBB;
+  font-size: 24rpx;
+  margin-top: 8rpx;
+}
+.login_box .login_swiper .swiper-item .btn {
+  clear: both;
+  margin-top: 36rpx;
+  width: 624rpx;
+  height: 92rpx;
+  line-height: 92rpx;
+  background-color: #F6F7F9;
+  color: #808080;
+  -webkit-border-radius: 12rpx;
+          border-radius: 12rpx;
+  text-align: center;
+}
+.login_box .login_swiper .swiper-item .btn.cur {
+  background-color: #BFA077;
+  color: #FFFFFF;
+}
+.login_box .footer {
+  position: absolute;
+  bottom: 30rpx;
+  color: #808080;
+  font-size: 20rpx;
+  left: 166rpx;
+}
+.login_box .footer text {
+  color: #BFA077;
+}
+ checkbox .uni-checkbox-input {
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  width: 18rpx;
+  height: 18rpx;
+  border-color: #979797;
+}
+ checkbox .uni-checkbox-input.uni-checkbox-input-checked {
+  background: #BFA077;
+  border-color: #979797;
+}
+ checkbox .uni-checkbox-input.uni-checkbox-input-checked::before {
+  color: #FFFFFF;
+  width: 26rpx;
+  height: 26rpx;
+  line-height: 26rpx;
+  text-align: center;
+  font-size: 18rpx;
+}
+ checkbox .wx-checkbox-input {
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  width: 18rpx;
+  height: 18rpx;
+  border-color: #979797;
+}
+ checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  background: #BFA077;
+  border-color: #979797;
+}
+ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  color: #FFFFFF;
+  width: 26rpx;
+  height: 26rpx;
+  line-height: 26rpx;
+  text-align: center;
+  font-size: 18rpx;
+}
 
