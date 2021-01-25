@@ -130,12 +130,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
@@ -283,11 +278,43 @@ var _default =
 {
   data: function data() {
     return {
-      xymengban: 'none',
-      yzmengban: 'none' };
+      xymengban: 'none', //协议蒙版
+      yzmengban: 'none', //验证蒙版
+      list: [], //数据
+      imagesTotal: 0, //轮播图数量
+      current: 0 };
 
   },
   methods: {
+    onLoad: function onLoad(e) {
+      var that = this;
+      uni.request({
+        url: '/api/car/detail',
+        data: {
+          id: e.id },
+
+        success: function success(res) {
+          if (res.data.status == 1) {
+            that.list = res.data.result;
+            that.imagesTotal = res.data.result.images.length;
+          } else if (res.data.status == 0) {
+            uni.showToast({
+              title: res.data.message,
+              icon: 'none' });
+
+          }
+        },
+        fail: function fail() {
+          uni.showToast({
+            title: '网络错误',
+            icon: 'loading' });
+
+        } });
+
+    },
+    bannerChange: function bannerChange(e) {
+      this.current = e.detail.current;
+    },
     // 禁止页面滑动
     moveHandle: function moveHandle() {
       return;
@@ -308,6 +335,7 @@ var _default =
     toAuth: function toAuth() {
       this.yzmengban = 'none';
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

@@ -3,7 +3,7 @@
 		<view class="content">
 			<view class="search">
 				<image src="../../static/img/search.jpg" class="icon"></image>
-				<input type="text" name="search" placeholder="输入您喜欢的车型或关键字" />
+				<input type="text" name="search" placeholder="输入您喜欢的车型或关键字" confirm-type="search" @confirm="doSearch" />
 			</view>
 			<image src="../../static/img/search_kefu.png" class="kefu"></image>
 			<swiper :autoplay="true" :interval="3000" :duration="1000">
@@ -98,14 +98,20 @@
 	export default {
 		data() {
 			return {
-				title: 'Hello'
+				
 			}
 		},
 		onLoad() {
 
 		},
 		methods: {
-
+			// 搜索
+			doSearch(e) {
+				uni.setStorageSync('search_car', e.detail.value)
+				uni.switchTab({
+					url: '/pages/car/car'
+				})
+			}
 		}
 	}
 </script>

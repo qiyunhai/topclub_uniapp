@@ -408,41 +408,11 @@
   font-size: 28rpx;
 }
  checkbox .uni-checkbox-input {
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
   width: 22rpx;
   height: 22rpx;
-  border-color: #979797;
-}
- checkbox .uni-checkbox-input.uni-checkbox-input-checked {
-  background: #BFA077;
-  border-color: #979797;
-}
- checkbox .uni-checkbox-input.uni-checkbox-input-checked::before {
-  color: #FFFFFF;
-  width: 26rpx;
-  height: 26rpx;
-  line-height: 26rpx;
-  text-align: center;
-  font-size: 18rpx;
 }
  checkbox .wx-checkbox-input {
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
   width: 22rpx;
   height: 22rpx;
-  border-color: #979797;
-}
- checkbox .wx-checkbox-input.wx-checkbox-input-checked {
-  background: #BFA077;
-  border-color: #979797;
-}
- checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
-  color: #FFFFFF;
-  width: 26rpx;
-  height: 26rpx;
-  line-height: 26rpx;
-  text-align: center;
-  font-size: 18rpx;
 }
 

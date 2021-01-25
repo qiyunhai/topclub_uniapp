@@ -201,86 +201,45 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 var _default =
 {
   data: function data() {
     return {
+      // 页面初始化
+      init: true,
+      // 筛选框显示状态
       types_box: 'none',
-      current: 0 };
+      // swiper默认选中页
+      current: 0,
+      // 品牌
+      brands: [],
+      // 类型
+      types: [],
+      // 列表数据
+      list: [],
+      // 当前分页
+      page: 1,
+      // 查询关键字
+      search: '',
+      // 选中的品牌
+      brand: 'all_car',
+      // 选中的类型
+      type: [] };
 
   },
   methods: {
+    onShow: function onShow() {
+      // 判断是否有其他页面传过来的搜索
+      var search_car = uni.getStorageSync('search_car');
+      if (search_car != '') {
+        this.search = search_car;
+        uni.setStorageSync('search_car', '');
+        this.getData();
+      }
+    },
+    onLoad: function onLoad() {
+      this.getData();
+    },
     // 禁止页面滑动
     moveHandle: function moveHandle() {
       return;
@@ -298,11 +257,113 @@ var _default =
       }
       this.types_box = types_box;
     },
+    // 搜索框更改
+    searchChange: function searchChange(e) {
+      this.search = e.detail.value;
+      this.page = 1;
+      this.getData();
+    },
+    // 重置选择
+    resetTypes: function resetTypes() {
+      this.type = [];
+    },
+    // 确认选择
+    submitTypes: function submitTypes() {
+      this.types_box = 'none';
+      this.page = 1;
+      this.getData();
+    },
+    // 选择品牌
+    brandChange: function brandChange(brand) {
+      this.brand = brand;
+      this.page = 1;
+      this.getData();
+    },
+    // 选择类别
+    typesChange: function typesChange(types) {
+      var typesArr = types.split('_');
+      if (typesArr[1] == 'all') {
+        this.type[typesArr[0]] = '';
+      } else {
+        this.type[typesArr[0]] = types;
+      }
+      this.types_box = 'none';
+      this.types_box = 'block';
+    },
     // 车辆详情页面
-    car_detail: function car_detail() {
+    car_detail: function car_detail(id) {
       uni.navigateTo({
-        url: 'detail' });
+        url: 'detail?id=' + id });
 
+    },
+    // 获取列表数据
+    getData: function getData() {
+      var that = this;
+      if (that.type.length == 0) {
+        var types = '';
+      } else {
+        var types = '';
+        for (var i = 0; i < that.type.length; i++) {
+          if (that.type[i] != undefined && that.type[i] != '') {
+            types += that.type[i] + ',';
+          }
+        }
+      }
+      if (that.brand == 'all_car') {
+        // 获取全部车辆
+        var brand = '';
+      } else {
+        var brand = that.brand;
+      }
+      uni.request({
+        url: '/api/Car/index',
+        data: {
+          init: that.init,
+          search: that.search,
+          types: types.slice(0, types.length - 1),
+          brand: brand,
+          page: that.page },
+
+        success: function success(res) {
+          that.init = false;
+          var datas = res.data.result;
+          that.types = datas.types;
+          that.brands = datas.brands;
+
+          if (res.data.status == 0) {
+            uni.showToast({
+              title: res.data.message,
+              icon: 'none' });
+
+            if (that.page != 1) {
+              that.page -= 1;
+            } else {
+              that.list = [];
+            }
+          } else if (res.data.status == 1) {
+            if (that.page == 1) {
+              that.list = datas.result;
+            } else {
+              that.list = that.list.concat(datas.result);
+            }
+          }
+        },
+        fail: function fail() {
+          uni.showToast({
+            title: '网络错误',
+            icon: 'loading' });
+
+        } });
+
+    },
+    // 上拉加载
+    onReachBottom: function onReachBottom() {
+      uni.showLoading({
+        title: '加载中' });
+
+      this.page += 1;
+      this.getData();
+      uni.hideLoading();
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

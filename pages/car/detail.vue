@@ -1,53 +1,48 @@
 <template>
 	<view class="main">
 		<view class="banner">
-			<swiper :duration="1000">
-				<swiper-item>
+			<swiper :duration="1000" :current="current" @change="bannerChange">
+				<swiper-item v-for="(item, index) in list.images">
 					<view class="swiper-item">
-						<image src="http://test.bjtopclub.com/uploads/20210107/8d71ceae0edd6d96dd9d60e36aaf09a6.png"></image>
-					</view>
-				</swiper-item>
-				<swiper-item>
-					<view class="swiper-item">
-						<image src="http://test.bjtopclub.com/uploads/20210107/8d71ceae0edd6d96dd9d60e36aaf09a6.png"></image>
+						<image :src="item"></image>
 					</view>
 				</swiper-item>
 			</swiper>
 			<view class="banner_page">
-				1/6
+				<text>{{current + 1}}</text>/<text>{{imagesTotal}}</text>
 			</view>
 			<view class="star">
 				<image src="../../static/img/car/car_shoucang.png"></image>
 			</view>
 		</view>
 		<view class="car_info">
-			<view class="price">￥12999/天</view>
-			<view class="original_price">原价￥14999/天</view>
-			<view class="title">兰博基尼LP700-4</view>
-			<view class="introduce">敞篷Aventador搭载V12-6.5L自然吸气发动机，百米数据2.9秒，选配带有自动启停，配置丰富，全段排气，霸气侧漏</view>
+			<view class="price">￥{{list.price}}/天</view>
+			<view class="original_price">原价￥{{list.original_price}}/天</view>
+			<view class="title">{{list.title}}</view>
+			<view class="introduce">{{list.introduce}}</view>
 			<view class="hr_box"></view>
 			<view class="specs">
 				<view class="item1">
 					<image src="../../static/img/car_jingpai.png"></image>
-					<text class="specs_item">京牌</text>
+					<text class="specs_item">{{list.license}}</text>
 				</view>
 				<view class="item2">
 					<image src="../../static/img/car_rixian.png"></image>
-					<text class="specs_item">日限200km</text>
+					<text class="specs_item">{{list.day_limit}}</text>
 				</view>
 				<view class="item3">
 					<image src="../../static/img/car_chexing.png"></image>
-					<text class="specs_item">16年上牌</text>
+					<text class="specs_item">{{list.year_limit}}</text>
 				</view>
 			</view>
 		</view>
 		<view class="item_box">
 			<view class="box_title">长租优惠</view>
 			<view class="yhlist">
-				<view>3日租金：<text>￥37047</text>（合计￥12345/天 <text>省￥1950</text>）</view>
-				<view>7日租金：<text>￥37047</text>（合计￥12345/天 <text>省￥1950</text>）</view>
-				<view>15日租金：<text>￥37047</text>（合计￥12345/天 <text>省￥1950</text>）</view>
-				<view>30日租金：<text>￥37047</text>（合计￥12345/天 <text>省￥1950</text>）</view>
+				<view>3日租金：<text>￥{{list.day3_price * 3}}</text>（合计￥{{list.day3_price}}/天 <text>省￥{{(list.price * 3) - (list.day3_price * 3)}}</text>）</view>
+				<view>7日租金：<text>￥{{list.day3_price * 7}}</text>（合计￥{{list.day7_price}}/天 <text>省￥{{(list.price * 7) - (list.day3_price * 7)}}</text>）</view>
+				<view>15日租金：<text>￥{{list.day3_price * 15}}</text>（合计￥{{list.day15_price}}/天 <text>省￥{{(list.price * 15) - (list.day3_price * 15)}}</text>）</view>
+				<view>30日租金：<text>￥{{list.day3_price * 30}}</text>（合计￥{{list.day30_price}}/天 <text>省￥{{(list.price * 30) - (list.day3_price * 30)}}</text>）</view>
 			</view>
 			<view class="yhitem">
 				<view class="item">
@@ -57,7 +52,7 @@
 				</view>
 				<view class="item">
 					<image src="../../static/img/car/jizhunyajin.png" class="icon"></image>
-					<view>基准押金 ￥52000</view>
+					<view>基准押金 ￥{{list.mortgage_price}}</view>
 					<image src="../../static/img/car/car_jiantou.png" class="show"></image>
 				</view>
 			</view>
@@ -110,7 +105,7 @@
 			</view>
 			<view class="footer">
 				<view class="lv">
-					<view class="price">￥2000</view>
+					<view class="price">￥{{list.reserve_price}}</view>
 					<view class="info">该费用是车辆定金，交车时缴纳佣金及押金</view>
 				</view>
 				<view class="rv" @click="yuding()">
@@ -122,14 +117,14 @@
 			<view class="xieyi">
 				<view class="xytitle">基准押金明细</view>
 				<view class="item">
-					<view class="title">*租车押金￥50000</view>
+					<view class="title">*租车押金￥{{list.mortgage_price}}</view>
 					<text>可退</text>
 					<view class="introduce">
 						订单生效时定金转为违章押金，若用车期间无违章，还车后20天内退还押金
 					</view>
 				</view>
 				<view class="item">
-					<view class="title">*违章押金￥2000</view>
+					<view class="title">*违章押金￥{{list.reserve_price}}</view>
 					<text>可退</text>
 					<view class="introduce">
 						订单生效时定金转为违章押金，若用车期间无违章，还车后20天内退还押金
@@ -151,11 +146,43 @@
 	export default {
 		data() {
 			return {
-				xymengban: 'none',
-				yzmengban: 'none'
+				xymengban: 'none',//协议蒙版
+				yzmengban: 'none',//验证蒙版
+				list: [],	//数据
+				imagesTotal: 0,	//轮播图数量
+				current: 0,
 			}
 		},
 		methods: {
+			onLoad(e) {
+				var that = this;
+				uni.request({
+					url: '/api/car/detail',
+					data: {
+						id: e.id
+					},
+					success(res) {
+						if(res.data.status == 1) {
+							that.list = res.data.result;
+							that.imagesTotal = res.data.result.images.length;
+						} else if(res.data.status == 0) {
+							uni.showToast({
+								title: res.data.message,
+								icon: 'none'
+							})
+						}
+					},
+					fail() {
+						uni.showToast({
+							title: '网络错误',
+							icon: 'loading'
+						})
+					}
+				})
+			},
+			bannerChange(e) {
+				this.current = e.detail.current;
+			},
 			// 禁止页面滑动
 			moveHandle() {
 				return;
@@ -564,41 +591,13 @@
 			font-size: 28rpx;
 		}
 	}
-	/deep/ checkbox .uni-checkbox-input {
-		border-radius: 50%;
-		width: 22rpx;
-		height: 22rpx;
-		border-color: #979797;
-	}
-	/deep/ checkbox .uni-checkbox-input.uni-checkbox-input-checked {
-		background: #BFA077;
-		border-color:#979797;
-	}
-	/deep/ checkbox .uni-checkbox-input.uni-checkbox-input-checked::before {
-		color: #FFFFFF;
-		width: 26rpx;
-		height: 26rpx;  
-		line-height: 26rpx;
-		text-align: center;
-		font-size: 18rpx;
-	}
 	
-	/deep/ checkbox .wx-checkbox-input {
-		border-radius: 50%;
+	/deep/ checkbox .uni-checkbox-input {
 		width: 22rpx;
 		height: 22rpx;
-		border-color: #979797;
 	}
-	/deep/ checkbox .wx-checkbox-input.wx-checkbox-input-checked {
-		background: #BFA077;
-		border-color:#979797;
-	}
-	/deep/ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
-		color: #FFFFFF;
-		width: 26rpx;
-		height: 26rpx;  
-		line-height: 26rpx;
-		text-align: center;
-		font-size: 18rpx;
+	/deep/ checkbox .wx-checkbox-input {
+		width: 22rpx;
+		height: 22rpx;
 	}
 </style>
