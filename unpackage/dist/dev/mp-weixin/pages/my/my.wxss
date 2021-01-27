@@ -398,4 +398,87 @@
 .login_box .footer text {
   color: #BFA077;
 }
+.zz {
+  width: 624rpx;
+  margin-top: 112rpx;
+  margin-left: 64rpx;
+  color: #393D59;
+  font-size: 28rpx;
+}
+.zz .account {
+  padding-bottom: 60rpx;
+  border-bottom: 2rpx solid #EEEEEE;
+}
+.zz .account .title text {
+  float: left;
+  margin-top: 6rpx;
+}
+.zz .account .title image {
+  float: left;
+  width: 16rpx;
+  height: 10rpx;
+  margin-top: 20rpx;
+  margin-left: 8rpx;
+}
+.zz .account input {
+  float: left;
+  margin-left: 40rpx;
+}
+.zz .code {
+  clear: both;
+  border-bottom: 2rpx solid #EEEEEE;
+  margin-top: 40rpx;
+  padding-bottom: 60rpx;
+}
+.zz .code .title {
+  float: left;
+  margin-top: 6rpx;
+}
+.zz .code input {
+  float: left;
+  margin-left: 30rpx;
+}
+.zz .code .get {
+  float: left;
+  color: #BBBBBB;
+  font-size: 24rpx;
+  margin-top: 8rpx;
+}
+.zz .password {
+  clear: both;
+  padding-bottom: 60rpx;
+  border-bottom: 2rpx solid #EEEEEE;
+  margin-top: 40rpx;
+}
+.zz .password .title {
+  float: left;
+  margin-top: 6rpx;
+}
+.zz .password input {
+  float: left;
+  margin-left: 58rpx;
+}
+.zz .password .icon {
+  float: right;
+  right: 42rpx;
+  width: 20rpx;
+  height: 24rpx;
+  margin-top: 6rpx;
+}
+.zz .btn {
+  clear: both;
+  margin-top: 40rpx;
+  width: 624rpx;
+  height: 92rpx;
+  line-height: 92rpx;
+  background-color: #F6F7F9;
+  color: #808080;
+  -webkit-border-radius: 12rpx;
+          border-radius: 12rpx;
+  text-align: center;
+}
+.zz .btn.cur {
+  background-color: #BFA077;
+  color: #FFFFFF;
+}
 

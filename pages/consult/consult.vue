@@ -40,14 +40,14 @@
 		<view class="mengban" @touchmove.stop.prevent="moveHandle" :style="'display:'+mengban" @click="close_box()"></view>
 		<view class="box" @touchmove.stop.prevent="moveHandle" :style="'display:'+gzh">
 			<image src="../../static/img/consult/gongzhonghao.png" class="title"></image>
-			<image src="../../static/img/consult/GongZhongHa.png" class="erimg"></image>
+			<image src="../../static/img/consult/gzh.png" class="erimg"></image>
 			<view class="info1">长按保存二维码</view>
 			<view class="info2">据说关注公众号可以领取优惠券哦</view>
 			<view class="info3">24小时服务热线：185 1888 8088</view>
 		</view>
 		<view class="box" @touchmove.stop.prevent="moveHandle" :style="'display:'+kf">
 			<image src="../../static/img/consult/wxkefu.png" class="title"></image>
-			<image src="../../static/img/consult/WeiXinHa.png" class="erimg"></image>
+			<image src="../../static/img/consult/kfewm.png" class="erimg"></image>
 			<view class="info1">长按保存二维码</view>
 			<view class="info2">添加微信客服24小时全天咨询</view>
 			<view class="info3">24小时服务热线：185 1888 8088</view>

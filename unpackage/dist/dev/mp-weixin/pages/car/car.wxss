@@ -113,6 +113,29 @@
   width: 36rpx;
   background: #BEA077;
 }
+.notcar {
+  position: absolute;
+  width: 90%;
+  margin-top: 736rpx;
+  text-align: center;
+}
+.notcar .info {
+  font-size: 24rpx;
+  color: #808080;
+}
+.notcar .btn {
+  margin-top: 40rpx;
+  margin-left: 200rpx;
+  width: 276rpx;
+  height: 64rpx;
+  line-height: 64rpx;
+  border: 2rpx solid #BFA077;
+  -webkit-border-radius: 32rpx;
+          border-radius: 32rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #BFA077;
+}
 .cars {
   position: absolute;
   margin-top: 504rpx;

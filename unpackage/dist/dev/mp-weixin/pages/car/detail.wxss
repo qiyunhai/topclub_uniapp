@@ -223,6 +223,7 @@
 .item_box .pzlist .item view {
   color: #393D59;
   margin-top: 8rpx;
+  font-size: 24rpx;
 }
 .item_box .lccontent {
   margin: 20rpx 0rpx 40rpx 40rpx;

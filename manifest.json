@@ -84,14 +84,7 @@
             "historyApiFallback" : true,
             "host" : "0.0.0.0",
             "disableHostCheck" : true,
-            "noInfo" : true,
-			"proxy" : {
-				"/api" : {
-					"target" : "http://test.bjtopclub.com",
-					"changeOrigin" : true,
-					"secure" : false
-				}
-			}
+            "noInfo" : true
         },
         "router" : {
             "mode" : "history"

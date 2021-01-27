@@ -1,23 +1,31 @@
 <template>
 	<view class="">
 		<view class="module1">
-			<image src="../../static/img/my/qingtong.png" class="background"></image>
-			<image src="../../static/img/default_head.jpg" class="head"></image>
-			<view class="name">会员A19988</view>
-			<view class="phone">175*****052</view>
-			<image src="../../static/img/my/huizhang.png" class="v"></image>
-			<image src="../../static/img/my/xiaoxi.png" class="xiaoxi"></image>
-			<image src="../../static/img/my/shezhi.png" class="shezhi"></image>
-			<view class="progress_value"><text>100</text>/8999</view>
-			<view class="progress">
-				<view class="val" style="width: 8%;"></view>
-			</view>
-			<view class="show_member">
-				<text>查看会员卡</text>
-				<image src="../../static/img/rightj.png"></image>
-			</view>
+			<block v-if="isLogin === true">
+				<image src="../../static/img/my/qingtong.png" class="background"></image>
+				<image :src="userInfo.head_image == '' ? '../../static/img/default_head.jpg' : userInfo.head_image" class="head"></image>
+				<view class="name">{{userInfo.name}}</view>
+				<view class="phone">{{userInfo.phone}}</view>
+				<image src="../../static/img/my/huizhang.png" class="v"></image>
+				<image src="../../static/img/my/xiaoxi.png" class="xiaoxi"></image>
+				<image src="../../static/img/my/shezhi.png" class="shezhi"></image>
+				<view class="progress_value"><text>{{userInfo.consume}}</text>/{{userInfo.nextGradeConsume}}</view>
+				<view class="progress">
+					<view class="val" :style="'width:'+userInfo.gradeProgress+'%'"></view>
+				</view>
+				<view class="show_member">
+					<text>查看会员卡</text>
+					<image src="../../static/img/rightj.png"></image>
+				</view>
+			</block>
+			<block v-else>
+				<image src="../../static/img/my/wdlb.png" class="background"></image>
+				<image src="../../static/img/default_head.jpg" class="head"></image>
+				<view class="name" @click="start_login">登录/注册</view>
+				<view class="phone" @click="start_login">点击登录，百辆豪车任你选用</view>
+			</block>
 		</view>
-		<view class="module2">
+		<view class="module2" v-if="isLogin === true">
 			<view class="box">
 				<image src="../../static/img/my/youhuiquan.png"></image>
 				<image src="../../static/img/my/dingdan.png"></image>
@@ -45,54 +53,81 @@
 		</view>
 		<view class="mengban" :style="'display:'+login_box"></view>
 		<view class="login_box" :style="'display:'+login_box">
-			<image src="../../static/img/my/qianbao.png" class="close" @click="close_login"></image>
-			<view class="register">还没有注册？立即注册</view>
-			<image src="../../static/img/default_head.jpg" class="logo"></image>
-			<view class="cut_swiper">
-				<view :class="[login_current == 0 ? 'item curr' : 'item']" @click="cutSwiper(0)">密码登录</view>
-				<view :class="[login_current == 1 ? 'item curr' : 'item']" @click="cutSwiper(1)">验证码登录</view>
+			<image src="../../static/img/my/qianbao.png" class="close" @click="close_login" v-if="login_current == 0 || login_current == 1"></image>
+			<image src="../../static/img/my/qianbao.png" class="close" @click="zz(0)" v-else></image>
+			<view class="register" v-if="login_current == 0 || login_current == 1" @click="zz(2)">还没有注册？立即注册</view>
+			<image src="../../static/img/default_head.jpg" class="logo" :style="(login_current == 0 || login_current == 1) ? '' : 'margin-top: 154rpx;'"></image>
+			<view :style="(login_current == 0 || login_current == 1) ? '' : 'display: none;'">
+				<view class="cut_swiper">
+					<view :class="login_current == 0 ? 'item curr' : 'item'" @click="cutSwiper(0)">密码登录</view>
+					<view :class="login_current == 1 ? 'item curr' : 'item'" @click="cutSwiper(1)">验证码登录</view>
+				</view>
+				<swiper class="login_swiper" :current="login_current" :duration="duration" @change="loginSwiperChange">
+					<swiper-item>
+						<view class="swiper-item">
+							<form @submit="login1">
+								<view class="account">
+									<view class="title">
+										<text>+86</text>
+										<image src="../../static/img/my/qianbao.png"></image>
+									</view>
+									<input type="text" name="phone" @input="login1_phone_input" placeholder="请输入手机号" />
+								</view>
+								<view class="password">
+									<view class="title">密码</view>
+									<input type="password" name="password" @input="login1_password_input" placeholder="请输入密码" />
+									<image src="../../static/img/my/qianbao.png" class="icon"></image>
+								</view>
+								<view class="fun">
+									<checkbox value="" />
+									<view class="remember">记住密码</view>
+									<view class="forget" @click="zz(3)">忘记密码</view>
+								</view>
+								<button :class="(login1Phone != '' && login1Password != '') ? 'btn cur' : 'btn'" form-type="submit">登录</button>
+							</form>
+						</view>
+					</swiper-item>
+					<swiper-item>
+						<view class="swiper-item">
+							<form @submit="login2">
+								<view class="phone">
+									<view class="title">
+										<text>+86</text>
+										<image src="../../static/img/my/qianbao.png"></image>
+									</view>
+									<input type="text" name="phone" @input="login2_phone_input" placeholder="请输入手机号" />
+								</view>
+								<view class="code">
+									<view class="title">验证码</view>
+									<input type="text" name="code" @input="login2_code_input" placeholder="请输入验证码" />
+									<view class="get" @click="sendLoginSms">{{login2GetCode}}</view>
+								</view>
+								<button :class="(login2Phone != '' && login2Code != '') ? 'btn cur' : 'btn'" form-type="submit">登录</button>
+							</form>
+						</view>
+					</swiper-item>
+				</swiper>
 			</view>
-			<swiper class="login_swiper" :current="login_current" :duration="500" @change="loginSwiperChange">
-				<swiper-item>
-					<view class="swiper-item">
-						<view class="account">
-							<view class="title">
-								<text>+86</text>
-								<image src="../../static/img/my/qianbao.png"></image>
-							</view>
-							<input type="text" placeholder="请输入手机号" />
-						</view>
-						<view class="password">
-							<view class="title">密码</view>
-							<input type="password" placeholder="请输入密码" />
-							<image src="../../static/img/my/qianbao.png" class="icon"></image>
-						</view>
-						<view class="fun">
-							<checkbox value="" />
-							<view class="remember">记住密码</view>
-							<view class="forget">忘记密码</view>
-						</view>
-						<view class="btn cur">登录</view>
+			<view class="zz" :style="(login_current == 2 || login_current == 3) ? '' : 'display: none;'">
+				<view class="account">
+					<view class="title">
+						<text>+86</text>
+						<image src="../../static/img/my/qianbao.png"></image>
 					</view>
-				</swiper-item>
-				<swiper-item>
-					<view class="swiper-item">
-						<view class="phone">
-							<view class="title">
-								<text>+86</text>
-								<image src="../../static/img/my/qianbao.png"></image>
-							</view>
-							<input type="text" placeholder="请输入手机号" />
-						</view>
-						<view class="code">
-							<view class="title">验证码</view>
-							<input type="text" placeholder="请输入验证码" />
-							<view class="get">获取验证码</view>
-						</view>
-						<view class="btn">登录</view>
-					</view>
-				</swiper-item>
-			</swiper>
+					<input type="text" @input="phone_input" placeholder="请输入手机号" />
+				</view>
+				<view class="code">
+					<view class="title">验证码</view>
+					<input type="text" @input="code_input" placeholder="请输入验证码" />
+					<view class="get" @click="zzSendSms">{{zzGetCode}}</view>
+				</view>
+				<view class="password">
+					<view class="title">密码</view>
+					<input type="password" @input="password_input" placeholder="请输入密码" />
+					<image src="../../static/img/my/qianbao.png" class="icon"></image>
+				</view>
+				<button :class="(zzPhone != '' && zzCode != '' && zzPassword != '') ? 'btn cur' : 'btn'" @click="zw">{{login_current == 2 ? '注册' : '确认修改'}}</button>
+			</view>
 			<view class="footer">
 				登录代表您已同意
 				<text>《服务协议》</text>
@@ -104,29 +139,324 @@
 </template>
 
 <script>
+	import api from '@/util/api.js';
 	export default {
 		data() {
 			return {
-				// 登录方式：0=密码登录，1=验证码登录
+				duration: 500,
+				// 0=密码登录，1=验证码登录，2=注册，3=忘记密码
 				login_current: 0,
-				login_box: 'block'
+				login_box: 'none',
+				// 登录框内容
+				login1Phone: '',
+				login1Password: '',
+				login2Phone: '',
+				login2Code: '',
+				// 获取验证码/倒计时
+				login2GetCode: '获取验证码',
+				login2CodeLock: false,	// 防止用户重复点击
+				// 注册、忘记密码
+				zzPhone: '',
+				zzPassword: '',
+				zzCode: '',
+				zzCodeLock: false,
+				zzGetCode: '获取验证码',
+				// 当前用户是否登录
+				isLogin: false,
+				// 用户信息
+				userInfo: [],
 			};
 		},
 		methods: {
+			onShow() {
+				this.refresh()
+			},
 			onLoad() {
-				uni.hideTabBar(); 
+				
 			},
 			// 切换登录方式
 			cutSwiper(cut) {
+				this.duration = 500;
 				this.login_current = cut
 			},
 			loginSwiperChange(event) {
+				this.duration = 500;
 				this.login_current = event.detail.current
+			},
+			// 监听输入框更改按钮样式
+			login1_phone_input(e) {
+				this.login1Phone = e.detail.value
+			},
+			login1_password_input(e) {
+				this.login1Password = e.detail.value
+			},
+			login2_phone_input(e) {
+				this.login2Phone = e.detail.value
+			},
+			login2_code_input(e) {
+				this.login2Code = e.detail.value
+			},
+			// 注册、忘记密码
+			phone_input(e) {
+				this.zzPhone = e.detail.value
+			},
+			code_input(e) {
+				this.zzCode = e.detail.value
+			},
+			password_input(e) {
+				this.zzPassword = e.detail.value
+			},
+			// 开启登录框
+			start_login() {
+				this.login_box = 'block';
+				uni.hideTabBar();
 			},
 			// 关闭登录框
 			close_login() {
 				this.login_box = 'none';
 				uni.showTabBar();
+			},
+			// 验证是否登录/登录状态是否有效
+			refresh() {
+				if(uni.getStorageSync('token') != '') {
+					// 登录状态：已登录
+					this.isLogin = true;
+					// 获取用户信息
+					api.request('/api/User/my', {}, 'GET', true).then(res => {
+						if(res.data.status == 1) {
+							this.userInfo = res.data.result;
+						} else if(res.data.status == 0) {
+							uni.showToast({
+								title: res.data.message,
+								icon: 'none'
+							})
+						} else if(res.data.status == -1) {
+							this.isLogin = false;
+						}
+					})
+				}
+			},
+			// 账号密码登录
+			login1(e) {
+				if(e.detail.value.phone == '') {
+					uni.showToast({
+						title: '请输入手机号',
+						icon: 'none'
+					})
+					return;
+				}
+				if(e.detail.value.password == '') {
+					uni.showToast({
+						title: '请输入密码',
+						icon: 'none'
+					})
+					return;
+				}
+				var data = {
+					phone: e.detail.value.phone,
+					password: e.detail.value.password,
+					type: this.login_current + 1
+				};
+				this.checkLogin(data)
+			},
+			// 短信验证码登录
+			login2(e) {
+				if(e.detail.value.phone == '') {
+					uni.showToast({
+						title: '请输入手机号',
+						icon: 'none'
+					})
+					return;
+				}
+				if(e.detail.value.code == '') {
+					uni.showToast({
+						title: '请输入验证码',
+						icon: 'none'
+					})
+					return;
+				}
+				var data = {
+					phone: e.detail.value.phone,
+					code: e.detail.value.code,
+					type: this.login_current + 1
+				};
+				this.checkLogin(data)
+			},
+			// 请求登录
+			checkLogin(data) {
+				api.request('/api/Login/checkLogin', data, "POST").then(res => {
+					if(res.data.status == 1) {
+						// 登录成功
+						uni.showToast({
+							title: res.data.message,
+							icon: 'success'
+						})
+						uni.setStorageSync('token', res.data.result.token)
+						// 关闭登录框
+						this.close_login()
+						// 清空输入框信息
+						if(data.type == 1) {
+							this.login1Phone = '';
+							this.login1Password = '';
+						} else if(data.type == 2){
+							this.login2Phone = '';
+							this.login2Code = '';
+						}
+						// 更新页面信息
+						this.refresh()
+					} else if(res.data.status == 0) {
+						// 登录失败
+						uni.showToast({
+							title: res.data.message,
+							icon: 'none'
+						})
+					}
+				})
+			},
+			// 登录短信验证码
+			sendLoginSms() {
+				if(!this.login2CodeLock) {
+					if(this.login2GetCode == '获取验证码') {
+						if(this.login2Phone == '') {
+							uni.showToast({
+								title: '请输入手机号',
+								icon: 'none'
+							})
+							return;
+						}
+						this.login2CodeLock = true;//上锁
+						var data = {
+							phone: this.login2Phone,
+							mode: 1
+						}
+						this.sendSms(data)
+					}
+				}
+			},
+			// 注册、忘记密码获取验证码
+			zzSendSms () {
+				if(!this.zzCodeLock) {
+					if(this.zzGetCode == '获取验证码') {
+						if(this.zzPhone == '') {
+							uni.showToast({
+								title: '请输入手机号',
+								icon: 'none'
+							})
+							return;
+						}
+						this.zzCodeLock = true;//上锁
+						if(this.login_current == 2) {
+							// 注册短信场景
+							var mode = 2;
+						} else if(this.login_current == 3) {
+							// 找回密码短信场景
+							var mode = 3;
+						}
+						var data = {
+							phone: this.zzPhone,
+							mode: mode
+						}
+						this.sendSms(data)
+					}
+				}
+			},
+			// 发送短信验证码
+			sendSms(data) {
+				api.request('/api/Sms/send', data, "POST").then(res => {
+					if(res.data.status == 1) {
+						uni.showToast({
+							title: res.data.message,
+							icon: 'success'
+						})
+						var num = 60;
+						var timer = setInterval(() => {
+							num -= 1;
+							if(data.mode == 2) {
+								this.login2GetCode = num+'S';
+								if(num <= 0) {
+									this.login2GetCode = '获取验证码';
+									this.login2CodeLock = false;//解锁
+									clearInterval(timer)
+								}
+							} else {
+								this.zzGetCode = num+'S';
+								if(num <= 0) {
+									this.zzGetCode = '获取验证码';
+									this.zzCodeLock = false;//解锁
+									clearInterval(timer)
+								}
+							}
+						}, 1000)
+					} else if(res.data.status == 0) {
+						uni.showToast({
+							title: res.data.message,
+							icon: 'none'
+						})
+						if(data.mode == 2) {
+							this.login2CodeLock = false;//解锁
+						} else {
+							this.zzCodeLock = false;//解锁
+						}
+					}
+				})
+			},
+			// 注册、找回密码
+			zz(val) {
+				this.duration = 0;
+				this.login_current = val;
+			},
+			zw() {
+				if(this.zzPhone == '') {
+					uni.showToast({
+						title: '请输入手机号',
+						icon: 'none'
+					})
+					return;
+				}
+				if(this.zzCode == '') {
+					uni.showToast({
+						title: '请输入验证码',
+						icon: 'none'
+					})
+					return;
+				}
+				if(this.zzPassword == '') {
+					uni.showToast({
+						title: '请输入密码',
+						icon: 'none'
+					})
+					return;
+				}
+				var type = this.login_current;
+				if(type == 2) {
+					var url = '/api/Login/checkRegister';	//注册
+				} else if(type == 3) {
+					var url = '/api/Login/checkRetrieve';	//找回密码
+				}
+				var data = {
+					phone: this.zzPhone,
+					code: this.zzCode,
+					password: this.zzPassword
+				}
+				api.request(url, data, "POST").then(res => {
+					if(res.data.status == 1) {
+						uni.showToast({
+							title: res.data.message,
+							icon: 'success'
+						})
+						// 清空输入框
+						this.zzPhone = '';
+						this.zzCode = '';
+						this.zzPassword = '';
+						// 跳转到登录
+						this.zz(0)
+					} else if(res.data.status == 0) {
+						uni.showToast({
+							title: res.data.message,
+							icon: 'none'
+						})
+					}
+				})
 			}
 		}
 	}
@@ -501,6 +831,90 @@
 			text {
 				color: #BFA077;
 			}
+		}
+	}
+	.zz {
+		width: 624rpx;
+		margin-top: 112rpx;
+		margin-left: 64rpx;
+		color: #393D59;
+		font-size: 28rpx;
+		.account {
+			padding-bottom: 60rpx;
+			border-bottom: 2rpx solid #EEEEEE;
+			.title {
+				text {
+					float: left;
+					margin-top: 6rpx;
+				}
+				image {
+					float: left;
+					width: 16rpx;
+					height: 10rpx;
+					margin-top: 20rpx;
+					margin-left: 8rpx;
+				}
+			}
+			input {
+				float: left;
+				margin-left: 40rpx;
+			}
+		}
+		.code {
+			clear: both;
+			border-bottom: 2rpx solid #EEEEEE;
+			margin-top: 40rpx;
+			padding-bottom: 60rpx;
+			.title {
+				float: left;
+				margin-top: 6rpx;
+			}
+			input {
+				float: left;
+				margin-left: 30rpx;
+			}
+			.get {
+				float: left;
+				color: #BBBBBB;
+				font-size: 24rpx;
+				margin-top: 8rpx;
+			}
+		}
+		.password {
+			clear: both;
+			padding-bottom: 60rpx;
+			border-bottom: 2rpx solid #EEEEEE;
+			margin-top: 40rpx;
+			.title {
+				float: left;
+				margin-top: 6rpx;
+			}
+			input {
+				float: left;
+				margin-left: 58rpx;
+			}
+			.icon {
+				float: right;
+				right: 42rpx;
+				width: 20rpx;
+				height: 24rpx;
+				margin-top: 6rpx;
+			}
+		}
+		.btn {
+			clear: both;
+			margin-top: 40rpx;
+			width: 624rpx;
+			height: 92rpx;
+			line-height: 92rpx;
+			background-color: #F6F7F9;
+			color: #808080;
+			border-radius: 12rpx;
+			text-align: center;
+		}
+		.btn.cur {
+			background-color: #BFA077;
+			color: #FFFFFF;
 		}
 	}
 </style>

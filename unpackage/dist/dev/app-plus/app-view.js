@@ -2556,8 +2556,15 @@ var render = function() {
                     { staticClass: _vm._$g(44, "sc"), attrs: { _i: 44 } },
                     [
                       _c(
-                        "v-uni-view",
-                        { staticClass: _vm._$g(45, "sc"), attrs: { _i: 45 } },
+                        "v-uni-form",
+                        {
+                          attrs: { _i: 45 },
+                          on: {
+                            submit: function($event) {
+                              return _vm.$handleViewEvent($event)
+                            }
+                          }
+                        },
                         [
                           _c(
                             "v-uni-view",
@@ -2566,81 +2573,102 @@ var render = function() {
                               attrs: { _i: 46 }
                             },
                             [
-                              _c("v-uni-text", { attrs: { _i: 47 } }, [
-                                _vm._v("+86")
-                              ]),
-                              _c("v-uni-image", {
-                                attrs: { src: _vm._$g(48, "a-src"), _i: 48 }
+                              _c(
+                                "v-uni-view",
+                                {
+                                  staticClass: _vm._$g(47, "sc"),
+                                  attrs: { _i: 47 }
+                                },
+                                [
+                                  _c("v-uni-text", { attrs: { _i: 48 } }, [
+                                    _vm._v("+86")
+                                  ]),
+                                  _c("v-uni-image", {
+                                    attrs: { src: _vm._$g(49, "a-src"), _i: 49 }
+                                  })
+                                ],
+                                1
+                              ),
+                              _c("v-uni-input", {
+                                attrs: {
+                                  type: "text",
+                                  name: "phone",
+                                  placeholder: "请输入手机号",
+                                  _i: 50
+                                }
                               })
                             ],
                             1
                           ),
-                          _c("v-uni-input", {
-                            attrs: {
-                              type: "text",
-                              placeholder: "请输入手机号",
-                              _i: 49
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _c(
-                        "v-uni-view",
-                        { staticClass: _vm._$g(50, "sc"), attrs: { _i: 50 } },
-                        [
                           _c(
                             "v-uni-view",
                             {
                               staticClass: _vm._$g(51, "sc"),
                               attrs: { _i: 51 }
                             },
-                            [_vm._v("密码")]
-                          ),
-                          _c("v-uni-input", {
-                            attrs: {
-                              type: "password",
-                              placeholder: "请输入密码",
-                              _i: 52
-                            }
-                          }),
-                          _c("v-uni-image", {
-                            staticClass: _vm._$g(53, "sc"),
-                            attrs: { src: _vm._$g(53, "a-src"), _i: 53 }
-                          })
-                        ],
-                        1
-                      ),
-                      _c(
-                        "v-uni-view",
-                        { staticClass: _vm._$g(54, "sc"), attrs: { _i: 54 } },
-                        [
-                          _c("v-uni-checkbox", {
-                            attrs: { value: "", _i: 55 }
-                          }),
-                          _c(
-                            "v-uni-view",
-                            {
-                              staticClass: _vm._$g(56, "sc"),
-                              attrs: { _i: 56 }
-                            },
-                            [_vm._v("记住密码")]
+                            [
+                              _c(
+                                "v-uni-view",
+                                {
+                                  staticClass: _vm._$g(52, "sc"),
+                                  attrs: { _i: 52 }
+                                },
+                                [_vm._v("密码")]
+                              ),
+                              _c("v-uni-input", {
+                                attrs: {
+                                  type: "password",
+                                  name: "password",
+                                  placeholder: "请输入密码",
+                                  _i: 53
+                                }
+                              }),
+                              _c("v-uni-image", {
+                                staticClass: _vm._$g(54, "sc"),
+                                attrs: { src: _vm._$g(54, "a-src"), _i: 54 }
+                              })
+                            ],
+                            1
                           ),
                           _c(
                             "v-uni-view",
                             {
-                              staticClass: _vm._$g(57, "sc"),
-                              attrs: { _i: 57 }
+                              staticClass: _vm._$g(55, "sc"),
+                              attrs: { _i: 55 }
                             },
-                            [_vm._v("忘记密码")]
+                            [
+                              _c("v-uni-checkbox", {
+                                attrs: { value: "", _i: 56 }
+                              }),
+                              _c(
+                                "v-uni-view",
+                                {
+                                  staticClass: _vm._$g(57, "sc"),
+                                  attrs: { _i: 57 }
+                                },
+                                [_vm._v("记住密码")]
+                              ),
+                              _c(
+                                "v-uni-view",
+                                {
+                                  staticClass: _vm._$g(58, "sc"),
+                                  attrs: { _i: 58 }
+                                },
+                                [_vm._v("忘记密码")]
+                              )
+                            ],
+                            1
+                          ),
+                          _c(
+                            "v-uni-button",
+                            {
+                              staticClass: _vm._$g(59, "sc"),
+                              attrs: { "form-type": "submit", _i: 59 }
+                            },
+                            [_vm._v("登录")]
                           )
                         ],
                         1
-                      ),
-                      _c(
-                        "v-uni-view",
-                        { staticClass: _vm._$g(58, "sc"), attrs: { _i: 58 } },
-                        [_vm._v("登录")]
                       )
                     ],
                     1
@@ -2650,28 +2678,28 @@ var render = function() {
               ),
               _c(
                 "v-uni-swiper-item",
-                { attrs: { _i: 59 } },
+                { attrs: { _i: 60 } },
                 [
                   _c(
                     "v-uni-view",
-                    { staticClass: _vm._$g(60, "sc"), attrs: { _i: 60 } },
+                    { staticClass: _vm._$g(61, "sc"), attrs: { _i: 61 } },
                     [
                       _c(
                         "v-uni-view",
-                        { staticClass: _vm._$g(61, "sc"), attrs: { _i: 61 } },
+                        { staticClass: _vm._$g(62, "sc"), attrs: { _i: 62 } },
                         [
                           _c(
                             "v-uni-view",
                             {
-                              staticClass: _vm._$g(62, "sc"),
-                              attrs: { _i: 62 }
+                              staticClass: _vm._$g(63, "sc"),
+                              attrs: { _i: 63 }
                             },
                             [
-                              _c("v-uni-text", { attrs: { _i: 63 } }, [
+                              _c("v-uni-text", { attrs: { _i: 64 } }, [
                                 _vm._v("+86")
                               ]),
                               _c("v-uni-image", {
-                                attrs: { src: _vm._$g(64, "a-src"), _i: 64 }
+                                attrs: { src: _vm._$g(65, "a-src"), _i: 65 }
                               })
                             ],
                             1
@@ -2680,7 +2708,7 @@ var render = function() {
                             attrs: {
                               type: "text",
                               placeholder: "请输入手机号",
-                              _i: 65
+                              _i: 66
                             }
                           })
                         ],
@@ -2688,13 +2716,13 @@ var render = function() {
                       ),
                       _c(
                         "v-uni-view",
-                        { staticClass: _vm._$g(66, "sc"), attrs: { _i: 66 } },
+                        { staticClass: _vm._$g(67, "sc"), attrs: { _i: 67 } },
                         [
                           _c(
                             "v-uni-view",
                             {
-                              staticClass: _vm._$g(67, "sc"),
-                              attrs: { _i: 67 }
+                              staticClass: _vm._$g(68, "sc"),
+                              attrs: { _i: 68 }
                             },
                             [_vm._v("验证码")]
                           ),
@@ -2702,14 +2730,14 @@ var render = function() {
                             attrs: {
                               type: "text",
                               placeholder: "请输入验证码",
-                              _i: 68
+                              _i: 69
                             }
                           }),
                           _c(
                             "v-uni-view",
                             {
-                              staticClass: _vm._$g(69, "sc"),
-                              attrs: { _i: 69 }
+                              staticClass: _vm._$g(70, "sc"),
+                              attrs: { _i: 70 }
                             },
                             [_vm._v("获取验证码")]
                           )
@@ -2718,7 +2746,7 @@ var render = function() {
                       ),
                       _c(
                         "v-uni-view",
-                        { staticClass: _vm._$g(70, "sc"), attrs: { _i: 70 } },
+                        { staticClass: _vm._$g(71, "sc"), attrs: { _i: 71 } },
                         [_vm._v("登录")]
                       )
                     ],
@@ -2732,12 +2760,12 @@ var render = function() {
           ),
           _c(
             "v-uni-view",
-            { staticClass: _vm._$g(71, "sc"), attrs: { _i: 71 } },
+            { staticClass: _vm._$g(72, "sc"), attrs: { _i: 72 } },
             [
               _vm._v("登录代表您已同意"),
-              _c("v-uni-text", { attrs: { _i: 72 } }, [_vm._v("《服务协议》")]),
+              _c("v-uni-text", { attrs: { _i: 73 } }, [_vm._v("《服务协议》")]),
               _vm._v("和"),
-              _c("v-uni-text", { attrs: { _i: 73 } }, [_vm._v("《隐私政策》")])
+              _c("v-uni-text", { attrs: { _i: 74 } }, [_vm._v("《隐私政策》")])
             ],
             1
           )

@@ -41,6 +41,10 @@
 					</view>
 				</view>
 			</view>
+			<view class="notcar" v-if="not_car">
+				<view class="info">该车型暂无，可以联系客服咨询哦</view>
+				<view class="btn">点击拨打客服热线</view>
+			</view>
 			<view class="types" @touchmove.stop.prevent="moveHandle" :style="'display:'+types_box">
 				<view class="mask" @click="types_box_switch(false)"></view>
 				<view class="types_box">
@@ -70,6 +74,7 @@
 </template>
 
 <script>
+	import api from '@/util/api.js';
 	export default {
 		data() {
 			return {
@@ -92,7 +97,9 @@
 				// 选中的品牌
 				brand: 'all_car',
 				// 选中的类型
-				type: []
+				type: [],
+				// 没有车
+				not_car: false
 			};
 		},
 		methods: {
@@ -166,61 +173,54 @@
 			},
 			// 获取列表数据
 			getData() {
-				var that = this;
-				if(that.type.length == 0) {
+				if(this.type.length == 0) {
 					var types = '';
 				}else{
 					var types = '';
-					for(let i = 0; i < that.type.length; i++) {
-						if(that.type[i] != undefined && that.type[i] != '') {
-							types += that.type[i]+',';
+					for(let i = 0; i < this.type.length; i++) {
+						if(this.type[i] != undefined && this.type[i] != '') {
+							types += this.type[i]+',';
 						}
 					}
 				}
-				if(that.brand == 'all_car') {
+				if(this.brand == 'all_car') {
 					// 获取全部车辆
 					var brand = '';
 				} else {
-					var brand = that.brand;
+					var brand = this.brand;
 				}
-				uni.request({
-					url: '/api/Car/index',
-					data: {
-						init: that.init,
-						search: that.search,
-						types: types.slice(0, types.length - 1),
-						brand: brand,
-						page: that.page
-					},
-					success(res) {
-						that.init = false;
-						var datas = res.data.result;
-						that.types = datas.types;
-						that.brands = datas.brands;
-						
-						if(res.data.status == 0) {
-							uni.showToast({
-								title: res.data.message,
-								icon: 'none'
-							})
-							if(that.page != 1) {
-								that.page -= 1;
-							} else {
-								that.list = [];
-							}
-						} else if(res.data.status == 1) {
-							if(that.page == 1) {
-								that.list = datas.result;
-							} else {
-								that.list = that.list.concat(datas.result);
-							}
+				var data = {
+					init: this.init,
+					search: this.search,
+					types: types.slice(0, types.length - 1),
+					brand: brand,
+					page: this.page
+				}
+				api.request('/api/Car/index', data).then(res => {
+					this.init = false;
+					var datas = res.data.result;
+					this.types = datas.types;
+					this.brands = datas.brands;
+					
+					if(res.data.status == 0) {
+						this.not_car = false;
+						// uni.showToast({
+						// 	title: res.data.message,
+						// 	icon: 'none'
+						// })
+						if(this.page != 1) {
+							this.page -= 1;
+						} else {
+							this.list = [];
+							this.not_car = true;
 						}
-					},
-					fail() {
-						uni.showToast({
-							title: '网络错误',
-							icon: 'loading'
-						})
+					} else if(res.data.status == 1) {
+						this.not_car = false;
+						if(this.page == 1) {
+							this.list = datas.result;
+						} else {
+							this.list = this.list.concat(datas.result);
+						}
 					}
 				})
 			},
@@ -326,6 +326,28 @@
 		.curr {
 			width: 36rpx;
 			background: #BEA077;
+		}
+	}
+	.notcar {
+		position: absolute;
+		width: 90%;
+		margin-top: 736rpx;
+		text-align: center;
+		.info {
+			font-size: 24rpx;
+			color: #808080;
+		}
+		.btn {
+			margin-top: 40rpx;
+			margin-left: 200rpx;
+			width: 276rpx;
+			height: 64rpx;
+			line-height: 64rpx;
+			border: 2rpx solid #BFA077;
+			border-radius: 32rpx;
+			text-align: center;
+			font-size: 28rpx;
+			color: #BFA077;
 		}
 	}
 	.cars {

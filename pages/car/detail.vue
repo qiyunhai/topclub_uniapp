@@ -143,6 +143,7 @@
 </template>
 
 <script>
+	import api from '@/util/api.js';
 	export default {
 		data() {
 			return {
@@ -155,27 +156,17 @@
 		},
 		methods: {
 			onLoad(e) {
-				var that = this;
-				uni.request({
-					url: '/api/car/detail',
-					data: {
-						id: e.id
-					},
-					success(res) {
-						if(res.data.status == 1) {
-							that.list = res.data.result;
-							that.imagesTotal = res.data.result.images.length;
-						} else if(res.data.status == 0) {
-							uni.showToast({
-								title: res.data.message,
-								icon: 'none'
-							})
-						}
-					},
-					fail() {
+				var data = {
+					id: e.id
+				};
+				api.request('/api/car/detail', data).then(res => {
+					if(res.data.status == 1) {
+						this.list = res.data.result;
+						this.imagesTotal = res.data.result.images.length;
+					} else if(res.data.status == 0) {
 						uni.showToast({
-							title: '网络错误',
-							icon: 'loading'
+							title: res.data.message,
+							icon: 'none'
 						})
 					}
 				})
@@ -408,6 +399,7 @@
 				view {
 					color: #393D59;
 					margin-top: 8rpx;
+					font-size: 24rpx;
 				}
 			}
 		}
