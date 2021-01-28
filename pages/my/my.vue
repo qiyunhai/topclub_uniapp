@@ -8,7 +8,7 @@
 				<view class="phone">{{userInfo.phone}}</view>
 				<image src="../../static/img/my/huizhang.png" class="v"></image>
 				<image src="../../static/img/my/xiaoxi.png" class="xiaoxi"></image>
-				<image src="../../static/img/my/shezhi.png" class="shezhi"></image>
+				<image src="../../static/img/my/shezhi.png" class="shezhi" @click="setting"></image>
 				<view class="progress_value"><text>{{userInfo.consume}}</text>/{{userInfo.nextGradeConsume}}</view>
 				<view class="progress">
 					<view class="val" :style="'width:'+userInfo.gradeProgress+'%'"></view>
@@ -36,7 +36,7 @@
 			<view class="title">常用工具</view>
 			<image src="../../static/img/my/zaixiankefu.png" class="zxkf"></image>
 			<image src="../../static/img/my/changjianwenti.png" class="cjwt"></image>
-			<image src="../../static/img/my/shoucangchexing.png" class="sccx"></image>
+			<image src="../../static/img/my/shoucangchexing.png" class="sccx" @click="collection"></image>
 			<view class="list">
 				<view class="item">
 					<view>意见反馈</view>
@@ -79,8 +79,8 @@
 									<image src="../../static/img/my/qianbao.png" class="icon"></image>
 								</view>
 								<view class="fun">
-									<checkbox value="" />
-									<view class="remember">记住密码</view>
+									<!-- <checkbox value="" />
+									<view class="remember">记住密码</view> -->
 									<view class="forget" @click="zz(3)">忘记密码</view>
 								</view>
 								<button :class="(login1Phone != '' && login1Password != '') ? 'btn cur' : 'btn'" form-type="submit">登录</button>
@@ -171,8 +171,17 @@
 			onShow() {
 				this.refresh()
 			},
-			onLoad() {
-				
+			// 设置页面
+			setting() {
+				uni.navigateTo({
+					url: '../setting/setting'
+				})
+			},
+			// 收藏车型
+			collection() {
+				uni.navigateTo({
+					url: '../collection/collection'
+				})
 			},
 			// 切换登录方式
 			cutSwiper(cut) {
@@ -225,6 +234,8 @@
 					api.request('/api/User/my', {}, 'GET', true).then(res => {
 						if(res.data.status == 1) {
 							this.userInfo = res.data.result;
+							// 登录信息保存到缓存
+							uni.setStorageSync('userInfo', res.data.result)
 						} else if(res.data.status == 0) {
 							uni.showToast({
 								title: res.data.message,

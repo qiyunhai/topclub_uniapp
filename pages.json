@@ -39,6 +39,50 @@
 			    "enablePullDownRefresh": false
 			}
 		}
+		,{
+			"path" : "pages/order/confirm",
+			"style" :                                                                                    
+			{
+			    "navigationBarTitleText": "确认订单",
+			    "enablePullDownRefresh": false
+			}
+		}
+        ,{
+            "path" : "pages/address/address",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "送车地址",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+		,{
+		    "path" : "pages/address/form",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "编辑地址",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		}
+        ,{
+            "path" : "pages/setting/setting",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "设置",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/collection/collection",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "收藏车型",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

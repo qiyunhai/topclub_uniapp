@@ -418,7 +418,9 @@ var _default = { data: function data() {return { duration: 500, // 0=密码登�
       // 注册、忘记密码
       zzPhone: '', zzPassword: '', zzCode: '', zzCodeLock: false, zzGetCode: '获取验证码', // 当前用户是否登录
       isLogin: false, // 用户信息
-      userInfo: [] };}, methods: { onShow: function onShow() {this.refresh();}, onLoad: function onLoad() {}, // 切换登录方式
+      userInfo: [] };}, methods: { onShow: function onShow() {this.refresh();}, // 设置页面
+    setting: function setting() {uni.navigateTo({ url: '../setting/setting' });}, // 收藏车型
+    collection: function collection() {uni.navigateTo({ url: '../collection/collection' });}, // 切换登录方式
     cutSwiper: function cutSwiper(cut) {this.duration = 500;this.login_current = cut;}, loginSwiperChange: function loginSwiperChange(event) {this.duration = 500;this.login_current = event.detail.current;}, // 监听输入框更改按钮样式
     login1_phone_input: function login1_phone_input(e) {this.login1Phone = e.detail.value;}, login1_password_input: function login1_password_input(e) {this.login1Password = e.detail.value;}, login2_phone_input: function login2_phone_input(e) {this.login2Phone = e.detail.value;}, login2_code_input: function login2_code_input(e) {this.login2Code = e.detail.value;}, // 注册、忘记密码
     phone_input: function phone_input(e) {this.zzPhone = e.detail.value;}, code_input: function code_input(e) {this.zzCode = e.detail.value;}, password_input: function password_input(e) {this.zzPassword = e.detail.value;}, // 开启登录框
@@ -426,13 +428,22 @@ var _default = { data: function data() {return { duration: 500, // 0=密码登�
     close_login: function close_login() {this.login_box = 'none';uni.showTabBar();}, // 验证是否登录/登录状态是否有效
     refresh: function refresh() {var _this = this;if (uni.getStorageSync('token') != '') {// 登录状态：已登录
         this.isLogin = true; // 获取用户信息
-        _api.default.request('/api/User/my', {}, 'GET', true).then(function (res) {if (res.data.status == 1) {_this.userInfo = res.data.result;} else if (res.data.status == 0) {uni.showToast({ title: res.data.message, icon: 'none' });} else if (res.data.status == -1) {_this.isLogin = false;}});}}, // 账号密码登录
+        _api.default.request('/api/User/my', {}, 'GET', true).then(function (res) {if (res.data.status == 1) {_this.userInfo = res.data.result; // 登录信息保存到缓存
+            uni.setStorageSync('userInfo', res.data.result);} else if (res.data.status == 0) {uni.showToast({ title: res.data.message, icon: 'none' });} else if (res.data.status == -1) {_this.isLogin = false;}});}}, // 账号密码登录
     login1: function login1(e) {if (e.detail.value.phone == '') {uni.showToast({ title: '请输入手机号', icon: 'none' });return;}if (e.detail.value.password == '') {uni.showToast({ title: '请输入密码', icon: 'none' });return;}var data = { phone: e.detail.value.phone, password: e.detail.value.password, type: this.login_current + 1 };this.checkLogin(data);}, // 短信验证码登录
     login2: function login2(e) {if (e.detail.value.phone == '') {uni.showToast({ title: '请输入手机号', icon: 'none' });return;}if (e.detail.value.code == '') {uni.showToast({ title: '请输入验证码', icon: 'none' });return;}var data = { phone: e.detail.value.phone, code: e.detail.value.code, type: this.login_current + 1 };this.checkLogin(data);}, // 请求登录
     checkLogin: function checkLogin(data) {var _this2 = this;_api.default.request('/api/Login/checkLogin', data, "POST").then(function (res) {if (res.data.status == 1) {// 登录成功
-          uni.showToast({ title: res.data.message, icon: 'success' });uni.setStorageSync('token', res.data.result.token); // 关闭登录框
-          _this2.close_login(); // 清空输入框信息
-          if (data.type == 1) {_this2.login1Phone = '';_this2.login1Password = '';} else if (data.type == 2) {_this2.login2Phone = '';_this2.login2Code = '';
+          uni.showToast({ title: res.data.message, icon: 'success' });
+          uni.setStorageSync('token', res.data.result.token);
+          // 关闭登录框
+          _this2.close_login();
+          // 清空输入框信息
+          if (data.type == 1) {
+            _this2.login1Phone = '';
+            _this2.login1Password = '';
+          } else if (data.type == 2) {
+            _this2.login2Phone = '';
+            _this2.login2Code = '';
           }
           // 更新页面信息
           _this2.refresh();

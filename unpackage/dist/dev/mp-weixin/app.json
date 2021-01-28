@@ -4,7 +4,12 @@
     "pages/car/car",
     "pages/consult/consult",
     "pages/my/my",
-    "pages/car/detail"
+    "pages/car/detail",
+    "pages/order/confirm",
+    "pages/address/address",
+    "pages/address/form",
+    "pages/setting/setting",
+    "pages/collection/collection"
   ],
   "subPackages": [],
   "window": {
@@ -42,6 +47,5 @@
       }
     ]
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap32.json"
+  "usingComponents": {}
 }

@@ -427,7 +427,8 @@ var _default = { data: function data() {return { xymengban: 'none', //协议蒙�
     moveHandle: function moveHandle() {return;}, // 用车协议
     xieyi_box: function xieyi_box() {this.xymengban = 'block';}, // 关闭所有弹出
     close_xieyi_box: function close_xieyi_box() {this.xymengban = 'none';}, // 立即预定
-    yuding: function yuding() {this.yzmengban = 'block';}, // 去验证
+    yuding: function yuding() {uni.navigateTo({ url: '../order/confirm' }); // this.yzmengban = 'block'
+    }, // 去验证
     toAuth: function toAuth() {this.yzmengban = 'none';} } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

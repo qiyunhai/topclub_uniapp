@@ -188,7 +188,10 @@
 			},
 			// 立即预定
 			yuding() {
-				this.yzmengban = 'block'
+				uni.navigateTo({
+					url: '../order/confirm'
+				})
+				// this.yzmengban = 'block'
 			},
 			// 去验证
 			toAuth() {
