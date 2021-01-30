@@ -28,8 +28,8 @@
 		<view class="module2" v-if="isLogin === true">
 			<view class="box">
 				<image src="../../static/img/my/youhuiquan.png"></image>
-				<image src="../../static/img/my/dingdan.png"></image>
-				<image src="../../static/img/my/qianbao.png"></image>
+				<image src="../../static/img/my/dingdan.png" @click="order"></image>
+				<image src="../../static/img/my/qianbao.png" @click="wallet"></image>
 			</view>
 		</view>
 		<view class="module3">
@@ -181,6 +181,18 @@
 			collection() {
 				uni.navigateTo({
 					url: '../collection/collection'
+				})
+			},
+			// 我的订单
+			order() {
+				uni.navigateTo({
+					url: '../order/list'
+				})
+			},
+			// 我的钱包
+			wallet() {
+				uni.navigateTo({
+					url: 'wallet'
 				})
 			},
 			// 切换登录方式

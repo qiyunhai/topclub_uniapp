@@ -136,6 +136,12 @@
   font-size: 36rpx;
   font-weight: 600;
 }
+.time .istime {
+  float: left;
+  font-size: 32rpx;
+  margin-top: 10rpx;
+  margin-left: 40rpx;
+}
 .time .hr {
   clear: both;
   width: 200rpx;
@@ -167,7 +173,7 @@
   font-size: 24rpx;
 }
 .time .date image {
-  margin-left: 20rpx;
+  margin-left: 12rpx;
   width: 100rpx;
   height: 16rpx;
 }
@@ -373,14 +379,83 @@
   margin-top: 28rpx;
   margin-left: 70rpx;
 }
+.mengban {
+  position: fixed;
+  top: 0rpx;
+  left: 0rpx;
+  z-index: 101;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 75%;
+}
 .select_time_box {
   position: fixed;
-  z-index: 101;
+  z-index: 102;
   width: 100%;
-  height: 716rpx;
-  background-color: #4CD964;
-  bottom: 98rpx;
+  height: 394rpx;
+  background-color: #FFFFFF;
+  bottom: 0rpx;
   -webkit-border-radius: 16rpx 16rpx 0rpx 0rpx;
           border-radius: 16rpx 16rpx 0rpx 0rpx;
+  color: #222222;
+}
+.select_time_box .title {
+  font-size: 28rpx;
+  font-weight: 600;
+  text-align: center;
+  padding-top: 30rpx;
+}
+.select_time_box .wx {
+  margin-top: 60rpx;
+  width: 100%;
+  height: 60rpx;
+  border-bottom: 2rpx solid #F2F2F2;
+}
+.select_time_box .wx .img {
+  float: left;
+  width: 44rpx;
+  height: 40rpx;
+  margin-left: 30rpx;
+}
+.select_time_box .wx .name {
+  float: left;
+  font-size: 28rpx;
+  margin-left: 20rpx;
+}
+.select_time_box .zfb {
+  margin-top: 20rpx;
+  width: 100%;
+  height: 44rpx;
+}
+.select_time_box .zfb .img {
+  float: left;
+  width: 44rpx;
+  height: 44rpx;
+  margin-left: 30rpx;
+}
+.select_time_box .zfb .name {
+  float: left;
+  font-size: 28rpx;
+  margin-top: 2rpx;
+  margin-left: 20rpx;
+}
+.select_time_box .dh {
+  float: right;
+  margin-top: 8rpx;
+  margin-right: 40rpx;
+  width: 32rpx;
+  height: 24rpx;
+}
+.select_time_box .btn {
+  clear: both;
+  width: 100%;
+  height: 98rpx;
+  line-height: 98rpx;
+  margin-top: 40rpx;
+  -webkit-border-radius: 0rpx;
+          border-radius: 0rpx;
+  background-color: #BFA077;
+  color: #FFFFFF;
+  font-size: 32rpx;
 }
 

@@ -336,11 +336,11 @@ var _default = { data: function data() {return { // 页面初始化
 
         if (res.data.status == 0) {
           _this.not_car = false;
-          // uni.showToast({
-          // 	title: res.data.message,
-          // 	icon: 'none'
-          // })
           if (_this.page != 1) {
+            uni.showToast({
+              title: res.data.message,
+              icon: 'none' });
+
             _this.page -= 1;
           } else {
             _this.list = [];

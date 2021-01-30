@@ -423,11 +423,12 @@ var _default = { data: function data() {return { xymengban: 'none', //协议蒙�
       yzmengban: 'none', //验证蒙版
       list: [], //数据
       imagesTotal: 0, //轮播图数量
-      current: 0 };}, methods: { onLoad: function onLoad(e) {var _this = this;var data = { id: e.id };_api.default.request('/api/car/detail', data).then(function (res) {if (res.data.status == 1) {_this.list = res.data.result;_this.imagesTotal = res.data.result.images.length;} else if (res.data.status == 0) {uni.showToast({ title: res.data.message, icon: 'none' });}});}, bannerChange: function bannerChange(e) {this.current = e.detail.current;}, // 禁止页面滑动
+      current: 0, id: '' //车辆id
+    };}, methods: { onLoad: function onLoad(e) {var _this = this;this.id = e.id;var data = { id: e.id };_api.default.request('/api/car/detail', data).then(function (res) {if (res.data.status == 1) {_this.list = res.data.result;_this.imagesTotal = res.data.result.images.length;} else if (res.data.status == 0) {uni.showToast({ title: res.data.message, icon: 'none' });}});}, bannerChange: function bannerChange(e) {this.current = e.detail.current;}, // 禁止页面滑动
     moveHandle: function moveHandle() {return;}, // 用车协议
     xieyi_box: function xieyi_box() {this.xymengban = 'block';}, // 关闭所有弹出
     close_xieyi_box: function close_xieyi_box() {this.xymengban = 'none';}, // 立即预定
-    yuding: function yuding() {uni.navigateTo({ url: '../order/confirm' }); // this.yzmengban = 'block'
+    yuding: function yuding() {uni.navigateTo({ url: '../order/confirm?id=' + this.id }); // this.yzmengban = 'block'
     }, // 去验证
     toAuth: function toAuth() {this.yzmengban = 'none';} } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

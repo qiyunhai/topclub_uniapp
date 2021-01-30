@@ -17,6 +17,10 @@
 			<view class="name">详细地址</view>
 			<input type="text" value="" placeholder="道路，楼牌号等" />
 		</view>
+		<view class="item">
+			<view class="name">测试啊</view>
+			<input type="text" value="" @click="abc" placeholder="123123123123" />
+		</view>
 		<view class="save">
 			<image src="../../static/logo.png"></image>
 		</view>
@@ -29,6 +33,11 @@
 			return {
 				
 			};
+		},
+		methods: {
+			abc() {
+				console.log('123')
+			}
 		}
 	}
 </script>

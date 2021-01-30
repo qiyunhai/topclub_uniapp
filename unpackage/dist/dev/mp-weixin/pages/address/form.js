@@ -155,13 +155,21 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
     return {};
 
 
-  } };exports.default = _default;
+  },
+  methods: {
+    abc: function abc() {
+      console.log('123');
+    } } };exports.default = _default;
 
 /***/ }),
 

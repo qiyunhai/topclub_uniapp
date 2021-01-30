@@ -92,11 +92,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
-var components
+var components = {
+  wPicker: function() {
+    return __webpack_require__.e(/*! import() | components/w-picker/w-picker */ "components/w-picker/w-picker").then(__webpack_require__.bind(null, /*! @/components/w-picker/w-picker.vue */ 92))
+  }
+}
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  if (!_vm._isMounted) {
+    _vm.e0 = function($event) {
+      _vm.shortTermVisibleStart = true
+    }
+
+    _vm.e1 = function($event) {
+      _vm.shortTermVisibleEnd = true
+    }
+  }
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -131,6 +144,42 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -371,13 +420,69 @@ var _api = _interopRequireDefault(__webpack_require__(/*! @/util/api.js */ 25));
 //
 //
 //
-var _default = { data: function data() {return { 'times': ['00时', '01时', '02时', '03时', '04时', '05时', '06时', '07时', '08时', '09时', '10时', '11时', '12时'], // 用车时间
-      startDate: '', startTime: '', // 还车时间
-      endDate: '', endTime: '' };}, onLoad: function onLoad() {}, methods: { // 选择送车地址
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default = { data: function data() {return { shortTermVisibleStart: false, shortTermVisibleEnd: false, // 用车时间
+      start: false, //选择状态
+      startInfo: '', //展示时间信息
+      startDateTime: '', //时间戳
+      // 还车时间
+      end: false, //选择状态
+      endInfo: '', //展示时间信息
+      endDateTime: '', //时间戳
+      // 用户地址
+      userAddress: [], // 汽车信息
+      car: [], price: '', // 租金
+      // 总金额
+      total_price: 0, // 用车天数
+      day: 0, // 支付框显示状态
+      pay_box: 'none', // 支付方式 1=微信,2=支付宝
+      pay_mode: 1 };}, onLoad: function onLoad(e) {var _this = this;var data = { id: e.id };_api.default.request('/api/Order/confirm', data, "GET", true).then(function (res) {var datas = res.data.result;var car = datas.car;_this.userAddress = datas.address;_this.car = car;_this.price = car.price;_this.startInfo = datas.thisDateTimeInfo;_this.endInfo = datas.thisDateTimeInfo; // 总金额
+      _this.total_price = Number(car.price) + Number(car.mortgage_price) + Number(car.reserve_price);});}, methods: { // 禁止滑动
+    moveHandle: function moveHandle() {return false;}, // 更改支付方式
+    edit_pay_mode: function edit_pay_mode(mode) {this.pay_mode = mode;}, // 关闭支付框
+    close_pay_box: function close_pay_box() {this.pay_box = 'none';}, // 选择送车地址
     address: function address() {uni.navigateTo({ url: '../address/address' });}, // 用车时间
-    start_date: function start_date(e) {// console.log(e)
-    }, start_time: function start_time() {}, // 还车时间
-    end_date: function end_date() {}, end_time: function end_time() {} } };exports.default = _default;
+    start_date: function start_date(res) {if (typeof res.obj.date == 'object') {var date = res.obj.date.value;} else {var date = res.obj.date;}if (typeof res.obj.hour == 'object') {var hour = res.obj.hour.value;} else {var hour = res.obj.hour;}this.startInfo = date.substring(5, 7) + '月' + date.substring(8, 10) + '日' + hour + '点';this.start = true;var startDateTime = String(new Date(date + ' ' + hour + ':00:00').getTime()).substring(0, 10);this.startDateTime = startDateTime;this.count_day();}, // 还车时间
+    end_date: function end_date(res) {if (typeof res.obj.date == 'object') {var date = res.obj.date.value;} else {var date = res.obj.date;}if (typeof res.obj.hour == 'object') {var hour = res.obj.hour.value;} else {var hour = res.obj.hour;}this.endInfo = date.substring(5, 7) + '月' + date.substring(8, 10) + '日' + hour + '点';this.end = true;var endDateTime = String(new Date(date + ' ' + hour + ':00:00').getTime()).substring(0, 10);this.endDateTime = endDateTime;this.count_day();}, // 根据时间戳计算天数
+    count_day: function count_day() {if (this.startDateTime != '' && this.endDateTime != '') {if (this.endDateTime < this.startDateTime) {this.day = 'null';} else {var diff = this.endDateTime - this.startDateTime;if (diff < 86400) {var day = 'null';} else {var day = Math.ceil(diff / 86400);}this.day = day; // 计算优惠价格
+          var price = this.car.price;if (day >= 3 && day < 7) {price = this.car.day3_price;} else if (day >= 7 && day < 15) {price = this.car.day7_price;} else if (day >= 15 && day < 30) {price = this.car.day15_price;} else if (day >= 30) {price = this.car.day30_price;}this.car.price = price; // 总金额
+          this.total_price = Number(price) + Number(this.car.mortgage_price) + Number(this.car.reserve_price);}}}, // 立即预定
+    yuding: function yuding() {this.pay_box = 'block';} } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

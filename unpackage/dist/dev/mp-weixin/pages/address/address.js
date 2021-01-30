@@ -130,41 +130,75 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
-{
-  data: function data() {
-    return {};
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
-  },
-  methods: {
+
+
+
+
+
+
+
+
+
+
+
+
+var _api = _interopRequireDefault(__webpack_require__(/*! @/util/api.js */ 25));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default = { data: function data() {return { list: [] };}, methods: { onLoad: function onLoad() {this.getData();}, // 获取列表数据
+    getData: function getData() {var _this = this;_api.default.request('/api/Address/index', {}, "GET", true).then(function (res) {if (res.data.status == 1) {_this.list = res.data.result;
+        } else if (res.data.status == 0) {
+          uni.showToast({
+            title: res.data.message,
+            icon: 'none' });
+
+        }
+      });
+    },
+    // 设置默认地址
+    setDefault: function setDefault(id) {
+      var that = this;
+      uni.showModal({
+        title: '提示',
+        content: '您确定要设置该地址为默认地址吗？',
+        success: function success(res) {
+          if (res.confirm) {
+            var data = {
+              id: id };
+
+            _api.default.request('/api/Address/setDefault', data, 'POST', true).then(function (res) {
+              if (res.data.status == 1) {
+                uni.showToast({
+                  title: res.data.message,
+                  icon: 'success' });
+
+                that.getData();
+              } else if (res.data.status == 0) {
+                uni.showToast({
+                  title: res.data.message,
+                  icon: 'none' });
+
+              }
+            });
+          }
+        } });
+
+    },
+    // 添加、编辑表单
     form: function form(id) {
       if (id == 0) {
         var url = 'form';
@@ -174,6 +208,13 @@ var _default =
       uni.navigateTo({
         url: url });
 
+    },
+    // 下拉加载更多
+    onPullDownRefresh: function onPullDownRefresh() {
+      this.getData();
+      setTimeout(function () {
+        uni.stopPullDownRefresh();
+      }, 1000);
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

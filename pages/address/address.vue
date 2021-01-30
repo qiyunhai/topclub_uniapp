@@ -1,24 +1,11 @@
 <template>
 	<view class="main">
-		<view class="item">
-			<view class="default cur">默认</view>
-			<view class="info">李某 86-17553665533</view>
-			<view class="addr">北京市 朝阳区 高碑店镇 高碑店村口</view>
+		<view class="item" v-for="(item, index) in list">
+			<view class="default cur" v-if="item.default == 1">默认</view>
+			<view @click="setDefault(item.id)" class="default" v-else>设默认</view>
+			<view class="info">{{item.name}} 86-{{item.phone}}</view>
+			<view class="addr">{{item.borrow_address}}</view>
 			<view class="btn">编辑</view>
-			<view class="hr"></view>
-		</view>
-		<view class="item">
-			<view class="default">设默认</view>
-			<view class="info">李某1 86-17553665533</view>
-			<view class="addr">北京市 朝阳区 高碑店镇 高碑店村口</view>
-			<view class="btn">编辑</view>
-			<view class="hr"></view>
-		</view>
-		<view class="item">
-			<view class="default">设默认</view>
-			<view class="info">李某2 86-17553665533</view>
-			<view class="addr">北京市 朝阳区 高碑店镇 高碑店村口</view>
-			<view class="btn">选择</view>
 			<view class="hr"></view>
 		</view>
 		<view class="add" @click="form(0)">点击添加更多地址</view>
@@ -26,13 +13,60 @@
 </template>
 
 <script>
+	import api from '@/util/api.js';
 	export default {
 		data() {
 			return {
-				
+				list: []
 			};
 		},
 		methods: {
+			onLoad() {
+				this.getData();
+			},
+			// 获取列表数据
+			getData() {
+				api.request('/api/Address/index', {}, "GET", true).then(res => {
+					if(res.data.status == 1) {
+						this.list = res.data.result;
+					} else if(res.data.status == 0) {
+						uni.showToast({
+							title: res.data.message,
+							icon: 'none'
+						})
+					}
+				})
+			},
+			// 设置默认地址
+			setDefault(id) {
+				var that = this;
+				uni.showModal({
+					title: '提示',
+					content: '您确定要设置该地址为默认地址吗？',
+					success(res) {
+						if (res.confirm) {
+							var data = {
+								id: id
+							}
+							api.request('/api/Address/setDefault', data, 'POST', true).then(res => {
+								if(res.data.status == 1) {
+									uni.showToast({
+										title: res.data.message,
+										icon: 'success'
+									})
+									that.getData()
+								} else if(res.data.status == 0) {
+									uni.showToast({
+										title: res.data.message,
+										icon: 'none'
+									})
+								}
+							})
+						}
+					}
+				})
+			},
+			// 添加、编辑表单
 			form(id) {
 				if(id == 0) {
 					var url = 'form';
@@ -42,6 +76,13 @@
 				uni.navigateTo({
 					url: url
 				})
+			},
+			// 下拉加载更多
+			onPullDownRefresh() {
+				this.getData();
+				setTimeout(function () {
+					uni.stopPullDownRefresh();
+				}, 1000);
 			}
 		}
 	}

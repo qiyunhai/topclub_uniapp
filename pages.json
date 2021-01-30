@@ -52,7 +52,7 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "送车地址",
-                "enablePullDownRefresh": false
+                "enablePullDownRefresh": true
             }
             
         }
@@ -62,6 +62,7 @@
 		    {
 		        "navigationBarTitleText": "编辑地址",
 		        "enablePullDownRefresh": false
+				
 		    }
 		    
 		}
@@ -76,19 +77,35 @@
         }
         ,{
             "path" : "pages/collection/collection",
-            "style" :                                                                                    
+            "style":
             {
                 "navigationBarTitleText": "收藏车型",
                 "enablePullDownRefresh": false
             }
-            
         }
+		,{
+		    "path" : "pages/order/list",
+		    "style":
+		    {
+		        "navigationBarTitleText": "我的订单",
+		        "enablePullDownRefresh": false
+		    }
+		}
+		,{
+		    "path" : "pages/my/wallet",
+		    "style":
+		    {
+		        "navigationBarTitleText": "我的钱包",
+		        "enablePullDownRefresh": true
+		    }
+		}
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8",
+		"usingComponents": true,
 		"app-plus": {
 			"titleNView": true
 		},

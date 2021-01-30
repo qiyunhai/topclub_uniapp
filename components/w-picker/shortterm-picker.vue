@@ -7,9 +7,9 @@
 			<picker-view-column>
 				<view class="w-picker-item" v-for="(item,index) in range.hours" :key="index">{{item.label}}时</view>
 			</picker-view-column>
-			<picker-view-column>
+			<!-- <picker-view-column>
 				<view class="w-picker-item" v-for="(item,index) in range.minutes" :key="index">{{item.label}}分</view>
-			</picker-view-column>
+			</picker-view-column> -->
 		</picker-view>
 	</view>
 </template>

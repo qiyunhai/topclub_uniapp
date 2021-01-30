@@ -204,11 +204,11 @@
 					
 					if(res.data.status == 0) {
 						this.not_car = false;
-						// uni.showToast({
-						// 	title: res.data.message,
-						// 	icon: 'none'
-						// })
 						if(this.page != 1) {
+							uni.showToast({
+								title: res.data.message,
+								icon: 'none'
+							})
 							this.page -= 1;
 						} else {
 							this.list = [];

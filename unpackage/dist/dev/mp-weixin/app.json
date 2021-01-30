@@ -9,7 +9,9 @@
     "pages/address/address",
     "pages/address/form",
     "pages/setting/setting",
-    "pages/collection/collection"
+    "pages/collection/collection",
+    "pages/order/list",
+    "pages/my/wallet"
   ],
   "subPackages": [],
   "window": {

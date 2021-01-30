@@ -152,10 +152,12 @@
 				list: [],	//数据
 				imagesTotal: 0,	//轮播图数量
 				current: 0,
+				id: '',//车辆id
 			}
 		},
 		methods: {
 			onLoad(e) {
+				this.id = e.id;
 				var data = {
 					id: e.id
 				};
@@ -189,7 +191,7 @@
 			// 立即预定
 			yuding() {
 				uni.navigateTo({
-					url: '../order/confirm'
+					url: '../order/confirm?id='+this.id
 				})
 				// this.yzmengban = 'block'
 			},
