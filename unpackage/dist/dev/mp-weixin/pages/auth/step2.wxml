@@ -1,0 +1,1 @@
+<view class="main"><view class="drive"><image class="card" src="../../static/logo.png"></image><image class="card" src="../../static/logo.png"></image><view class="msg"><view class="title">*拍摄要求</view><view class="info">需本人有效身份证，请确保身份证和驾驶证同一人拍摄时确保无反光阴影，信息完整，内容清晰</view></view><button class="btn">确认提交</button></view></view>

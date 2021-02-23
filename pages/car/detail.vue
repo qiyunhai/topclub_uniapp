@@ -190,9 +190,11 @@
 			},
 			// 立即预定
 			yuding() {
-				uni.navigateTo({
-					url: '../order/confirm?id='+this.id
-				})
+				if(api.isLogin()) {
+					uni.navigateTo({
+						url: '../order/confirm?id='+this.id
+					})
+				}
 				// this.yzmengban = 'block'
 			},
 			// 去验证

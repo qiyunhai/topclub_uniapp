@@ -418,7 +418,8 @@ var _default = { data: function data() {return { duration: 500, // 0=密码登�
       // 注册、忘记密码
       zzPhone: '', zzPassword: '', zzCode: '', zzCodeLock: false, zzGetCode: '获取验证码', // 当前用户是否登录
       isLogin: false, // 用户信息
-      userInfo: [] };}, methods: { onShow: function onShow() {this.refresh();}, // 设置页面
+      userInfo: [] };}, methods: { onShow: function onShow() {this.refresh();}, // 消息
+    message: function message() {uni.navigateTo({ url: '../message/message' });}, // 设置页面
     setting: function setting() {uni.navigateTo({ url: '../setting/setting' });}, // 收藏车型
     collection: function collection() {uni.navigateTo({ url: '../collection/collection' });}, // 我的订单
     order: function order() {uni.navigateTo({ url: '../order/list' });}, // 我的钱包
@@ -433,7 +434,12 @@ var _default = { data: function data() {return { duration: 500, // 0=密码登�
         _api.default.request('/api/User/my', {}, 'GET', true).then(function (res) {if (res.data.status == 1) {_this.userInfo = res.data.result; // 登录信息保存到缓存
             uni.setStorageSync('userInfo', res.data.result);} else if (res.data.status == 0) {uni.showToast({ title: res.data.message, icon: 'none' });} else if (res.data.status == -1) {_this.isLogin = false;}});}}, // 账号密码登录
     login1: function login1(e) {if (e.detail.value.phone == '') {uni.showToast({ title: '请输入手机号', icon: 'none' });return;}if (e.detail.value.password == '') {uni.showToast({ title: '请输入密码', icon: 'none' });return;}var data = { phone: e.detail.value.phone, password: e.detail.value.password, type: this.login_current + 1 };this.checkLogin(data);}, // 短信验证码登录
-    login2: function login2(e) {if (e.detail.value.phone == '') {uni.showToast({ title: '请输入手机号', icon: 'none' });return;}if (e.detail.value.code == '') {uni.showToast({ title: '请输入验证码', icon: 'none' });return;}var data = { phone: e.detail.value.phone, code: e.detail.value.code, type: this.login_current + 1 };
+    login2: function login2(e) {if (e.detail.value.phone == '') {uni.showToast({ title: '请输入手机号', icon: 'none' });return;}if (e.detail.value.code == '') {uni.showToast({ title: '请输入验证码', icon: 'none' });return;
+      }
+      var data = {
+        phone: e.detail.value.phone,
+        code: e.detail.value.code,
+        type: this.login_current + 1 };
 
       this.checkLogin(data);
     },

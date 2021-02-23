@@ -47,6 +47,15 @@
 			    "enablePullDownRefresh": false
 			}
 		}
+		,{
+		    "path" : "pages/order/detail",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "订单详情",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		}
         ,{
             "path" : "pages/address/address",
             "style" :                                                                                    
@@ -99,6 +108,52 @@
 		        "enablePullDownRefresh": true
 		    }
 		}
+        ,{
+            "path" : "pages/auth/step1",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "身份验证",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+		,{
+		    "path" : "pages/auth/step2",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "身份验证",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		}
+		
+        ,{
+            "path" : "pages/message/message",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "消息",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+		,{
+		    "path" : "pages/message/order",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "订单消息",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		}
+        ,{
+            "path" : "pages/discount/discount",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "优惠专区",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

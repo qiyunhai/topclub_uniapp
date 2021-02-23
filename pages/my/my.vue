@@ -7,7 +7,7 @@
 				<view class="name">{{userInfo.name}}</view>
 				<view class="phone">{{userInfo.phone}}</view>
 				<image src="../../static/img/my/huizhang.png" class="v"></image>
-				<image src="../../static/img/my/xiaoxi.png" class="xiaoxi"></image>
+				<image src="../../static/img/my/xiaoxi.png" class="xiaoxi" @click="message"></image>
 				<image src="../../static/img/my/shezhi.png" class="shezhi" @click="setting"></image>
 				<view class="progress_value"><text>{{userInfo.consume}}</text>/{{userInfo.nextGradeConsume}}</view>
 				<view class="progress">
@@ -169,7 +169,14 @@
 		},
 		methods: {
 			onShow() {
+				this.isLogin = false;
 				this.refresh()
+			},
+			// 消息
+			message() {
+				uni.navigateTo({
+					url: '../message/message'
+				})
 			},
 			// 设置页面
 			setting() {

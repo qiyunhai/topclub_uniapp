@@ -6,12 +6,17 @@
     "pages/my/my",
     "pages/car/detail",
     "pages/order/confirm",
+    "pages/order/detail",
     "pages/address/address",
     "pages/address/form",
     "pages/setting/setting",
     "pages/collection/collection",
     "pages/order/list",
-    "pages/my/wallet"
+    "pages/my/wallet",
+    "pages/auth/step1",
+    "pages/auth/step2",
+    "pages/message/message",
+    "pages/message/order"
   ],
   "subPackages": [],
   "window": {
@@ -49,5 +54,6 @@
       }
     ]
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap21.json"
 }

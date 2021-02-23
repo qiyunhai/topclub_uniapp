@@ -120,9 +120,11 @@
 			</view>
 			<view class="content">
 				<view class="xy">
-					<checkbox value="" />
+					<checkbox v-if="checkboxVal == true" checked @click="checkboxChange" />
+					<checkbox v-if="checkboxVal == false" @click="checkboxChange" />
 					<view>
-						我已阅读并同意<text class="a" @click="xieyi_box()">《用车服务协议》</text>
+						<text @click="checkboxChange">我已阅读并同意</text>
+						<text class="a" @click="xieyi_box()">《用车服务协议》</text>
 					</view>
 				</view>
 			</view>
@@ -148,13 +150,14 @@
 					<view class="name">支付宝支付</view>
 					<image src="../../static/img/xuanzhong.png" class="dh" v-if="pay_mode == 2"></image>
 				</view>
-				<button class="btn">立即支付</button>
+				<button class="btn" @click="pay">立即支付</button>
 			</view>
 		</view>
 	</view>
 </template>
 
 <script>
+	// const jweixin = require('jweixin-module');
 	import api from '@/util/api.js';
 	export default {
 		data() {
@@ -172,6 +175,7 @@
 				// 用户地址
 				userAddress: [],
 				// 汽车信息
+				car_id: 0,
 				car: [],
 				price: '',	// 租金
 				// 总金额
@@ -181,10 +185,13 @@
 				// 支付框显示状态
 				pay_box: 'none',
 				// 支付方式 1=微信,2=支付宝
-				pay_mode: 1
+				pay_mode: 1,
+				// 同意协议
+				checkboxVal: false
 			}
 		},
 		onLoad(e) {
+			this.car_id = e.id;
 			var data = {
 				id: e.id
 			}
@@ -204,6 +211,10 @@
 			// 禁止滑动
 			moveHandle() {
 				return false;
+			},
+			// 协议同意状态
+			checkboxChange() {
+				this.checkboxVal = !this.checkboxVal;
 			},
 			// 更改支付方式
 			edit_pay_mode(mode) {
@@ -263,7 +274,7 @@
 					} else {
 						let diff = this.endDateTime - this.startDateTime;
 						if(diff < 86400) {
-							var day = 'null';
+							var day = 1;
 						} else {
 							var day = Math.ceil(diff / 86400);
 						}
@@ -281,14 +292,250 @@
 						}
 						this.car.price = price;
 						// 总金额
-						this.total_price = Number(price) + Number(this.car.mortgage_price) + Number(this.car.reserve_price);
+						this.total_price = (Number(price) * day) + Number(this.car.mortgage_price) + Number(this.car.reserve_price);
 					}
 				}
 			},
 			// 立即预定
 			yuding() {
+				if(this.start == false) {
+					uni.showToast({
+						title:"请选择用车时间",
+						icon:"none"
+					})
+					return
+				}
+				if(this.end == false) {
+					uni.showToast({
+						title:"请选择还车时间",
+						icon:"none"
+					})
+					return
+				}
+				if(this.checkboxVal == false) {
+					uni.showToast({
+						title:"您还未同意用车服务协议",
+						icon:"none"
+					})
+					return
+				}
 				this.pay_box = 'block';
-			}
+			},
+			// 支付
+			pay() {
+				// uni.showToast({
+				// 	title:"支付正在对接中",
+				// 	icon:"none"
+				// })
+				// return
+				// // #ifdef H5
+				// var local = 'https://test.bjtopclub.com/pages/order/confirm';   //你自己的需要跳转到的页面
+				// 				var APPID = 'wx6264f512db5292f5';
+				// 				window.location.href =
+				// 					'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' +
+				// 					APPID +
+				// 					'&redirect_uri=' +
+				// 					encodeURIComponent(local) +
+				// 					'&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect'
+				// // this.isWechat()
+				// // #endif
+				// return
+				// 下单
+				api.request('/api/Order/create', {
+					car_id: this.car_id,
+					start_date_time: this.startDateTime,
+					end_date_time: this.endDateTime
+				}, 'POST', true).then(res => {
+					// 订单号
+					var order_number = res.data.result.order_number
+					if(res.data.status == 1) {
+						// 下单成功，发起支付
+						// #ifdef MP-WEIXIN
+						uni.getProvider({
+						    service: 'oauth',
+						    success: function (e) {
+								if (~e.provider.indexOf('weixin')) {
+									uni.login({
+										provider: 'weixin',
+										success: function (loginRes) {
+											api.request('/api/Pay/wxPayOrder', {
+												code: loginRes.code,
+												order_number: order_number
+											}).then(res => {
+												var datas = JSON.parse(res.data.result);
+												// 发起微信支付
+												uni.requestPayment({
+													provider: 'wxpay',
+													timeStamp: datas.timeStamp,
+													nonceStr: datas.nonceStr,
+													package: datas.package,
+													signType: datas.signType,
+													paySign: datas.paySign,
+												    success (result) {
+														console.log(result)
+												        uni.showToast({
+															title:"支付成功",
+															icon:"none"
+												        })
+												    },
+												    fail () {
+												        uni.showToast({
+															title:"支付失败",
+															icon:"none"
+												        })
+												    }
+												})
+											})
+										},
+										fail() {
+											uni.showToast({
+												title:"获取登录信息失败",
+												icon:"none"
+											})
+										}
+									});
+								}
+							},
+							fail() {
+								uni.showToast({
+									title:"拉取设备信息失败",
+									icon:"none"
+								})
+							}
+						})
+						// #endif
+					} else if(res.data.status == 0) {
+						// 下单失败
+						uni.showToast({
+							title:res.data.message,
+							icon:"none"
+						})
+					}
+				})
+				return;
+			},
+			payRequest:function(){
+				var self = this;
+				console.log(self)
+				jweixin.config({
+					debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+					appId:AppId, // 必填，公众号的唯一标识
+					timestamp:self.rtData.timeStamp, // 必填，生成签名的时间戳
+					nonceStr:self.rtData.nonceStr, // 必填，生成签名的随机串
+					signature:self.rtData.paySign, // 必填，签名，见附录1
+					jsApiList: ['chooseWXPay'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+				});
+				jweixin.ready(function() {
+					jweixin.checkJsApi({
+						jsApiList: ['chooseWXPay'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
+						success: function(res) {
+							console.log('checkjsapi Success')
+							console.log(res);
+						},
+						fail:function(res) {
+							console.log('res')
+							console.log(res);
+						}
+					});
+					jweixin.chooseWXPay({
+						timestamp: self.rtData.timeStamp, // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
+						nonceStr: self.rtData.nonceStr, // 支付签名随机串，不长于 32 位
+						package: self.rtData.packageValue, // 统一支付接口返回的prepay_id参数值，提交格式如：prepay_id=***）
+						signType: 'MD5', // 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'
+						paySign:self.rtData.paySign, // 支付签名
+						success:function(res) {
+							// 支付成功后的回调函数
+							
+							console.log('paysuccess')
+							console.log(res)
+							var route =  'payResult' + '?type=1'
+							uni.navigateTo({
+							  url:route
+							});
+							
+						},
+						cancel: function(r) {
+						   var route =  'payResult' + '?type=2'
+						   uni.navigateTo({
+							 url:route
+						   });
+						},
+						fail:function(res) {
+						   
+							console.log('payfail')
+							console.log(res)
+							var route =  'payResult' + '?type=0' 
+							uni.navigateTo({
+							  url:route
+							});
+							
+							
+						}
+					});
+				});
+				 
+				jweixin.error(function(res) {
+					console.log('error')
+					console.log(res)
+					uni.showToast({
+						icon: 'none',
+						title: '支付失败了',
+						duration: 4000
+					});
+						// config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+						/*alert("config信息验证失败");*/
+				});
+							
+			},
+			
+			
+			
+			//判断是否在微信中  
+			isWechat: function() {
+				var ua = window.navigator.userAgent.toLowerCase();
+				if (ua.match(/micromessenger/i) == 'micromessenger') {
+					console.log('是微信客户端')
+					return true;
+				} else {
+					console.log('不是微信客户端')
+					return false;
+				}
+			},
+			//初始化sdk配置  
+			initJssdkShare: function(callback, url) {
+				console.log("init Url : "+url)
+				return;
+				// 这是我这边封装的 request 请求工具，实际就是 uni.request 方法。
+				request.post(
+					'http://127.0.0.1:8080/mptask/api/getSignPackage',
+					{
+						url: url
+					},
+					"form",
+					function(res){
+						let success = res["success"];
+						let result = res["result"];
+						if(success){
+							jweixin.config({
+								debug: false,
+								appId: result.appId,
+								timestamp: result.timestamp,
+								nonceStr: result.nonceStr,
+								signature: result.signature,
+								jsApiList: [
+									'checkJsApi',
+									'onMenuShareTimeline',
+									'onMenuShareAppMessage'
+								]
+							});
+							//配置完成后，再执行分享等功能  
+							if (callback) {
+								callback(result);
+							}
+						}
+					}
+				);
+			},
 		}
 	}
 </script>
@@ -719,11 +966,12 @@
 			height: 24rpx;
 		}
 		.btn {
+			position: absolute;
+			bottom: 0rpx;
 			clear: both;
 			width: 100%;
 			height: 98rpx;
 			line-height: 98rpx;
-			margin-top: 40rpx;
 			border-radius: 0rpx;
 			background-color: #BFA077;
 			color: #FFFFFF;

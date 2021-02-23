@@ -1,0 +1,24 @@
+{
+  "name": "topclub_uniapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "dependencies": {
+    "jweixin-module": "^1.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qiyunhai/topclub_uniapp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/qiyunhai/topclub_uniapp/issues"
+  },
+  "homepage": "https://github.com/qiyunhai/topclub_uniapp#readme"
+}

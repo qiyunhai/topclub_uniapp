@@ -64,6 +64,7 @@
 						if (res.confirm) {
 							api.request('/api/Logout/index', {}, "GET", true).then(res => {
 								if(res.data.status == 1) {
+									uni.setStorageSync('token', '')
 									uni.switchTab({
 										url: '../my/my'
 									})

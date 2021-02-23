@@ -447,11 +447,12 @@
   height: 24rpx;
 }
 .select_time_box .btn {
+  position: absolute;
+  bottom: 0rpx;
   clear: both;
   width: 100%;
   height: 98rpx;
   line-height: 98rpx;
-  margin-top: 40rpx;
   -webkit-border-radius: 0rpx;
           border-radius: 0rpx;
   background-color: #BFA077;

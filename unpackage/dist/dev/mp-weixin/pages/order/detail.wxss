@@ -1,0 +1,342 @@
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.main {
+  background-color: #F7F7F7;
+  width: 100%;
+  height: auto;
+}
+.module {
+  background-color: #FFFFFF;
+  margin-bottom: 18rpx;
+}
+.address {
+  position: relative;
+  height: 120rpx;
+  color: #393D59;
+  font-size: 28rpx;
+}
+.address .dw {
+  position: absolute;
+  width: 26rpx;
+  height: 34rpx;
+  margin-top: 44rpx;
+  margin-left: 40rpx;
+}
+.address .jiao {
+  position: absolute;
+  width: 10rpx;
+  height: 20rpx;
+  margin-top: 50rpx;
+  margin-left: 700rpx;
+}
+.address .info1 {
+  position: absolute;
+  margin-top: 22rpx;
+  margin-left: 86rpx;
+}
+.address .info2 {
+  position: absolute;
+  margin-top: 62rpx;
+  margin-left: 86rpx;
+}
+.car {
+  position: relative;
+  width: 100%;
+  height: 220rpx;
+}
+.car .img {
+  position: absolute;
+  width: 240rpx;
+  height: 160rpx;
+  margin-top: 30rpx;
+  margin-left: 40rpx;
+}
+.car .title {
+  position: absolute;
+  font-size: 36rpx;
+  color: #393D59;
+  margin-top: 30rpx;
+  margin-left: 314rpx;
+}
+.car .paizhao {
+  position: absolute;
+  margin-left: 314rpx;
+  padding-top: 90rpx;
+}
+.car .paizhao image {
+  width: 40rpx;
+  height: 20rpx;
+}
+.car .paizhao text {
+  margin-left: 12rpx;
+  color: #393B5B;
+  font-size: 24rpx;
+}
+.car .nian {
+  position: absolute;
+  margin-left: 434rpx;
+  padding-top: 100rpx;
+}
+.car .nian image {
+  float: left;
+  width: 28rpx;
+  height: 28rpx;
+}
+.car .nian text {
+  float: left;
+  margin-left: 12rpx;
+  color: #393B5B;
+  font-size: 24rpx;
+}
+.car .price {
+  position: absolute;
+  color: #BFA077;
+  font-size: 28rpx;
+  font-weight: 600;
+  padding-top: 140rpx;
+  margin-left: 314rpx;
+}
+.car .price text {
+  font-size: 36rpx;
+}
+.car .status {
+  position: absolute;
+  color: #393B5B;
+  font-size: 24rpx;
+  margin-top: 158rpx;
+  margin-left: 634rpx;
+}
+.price_info .content {
+  width: 670rpx;
+  margin: 0 auto;
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+  color: #393D59;
+  border-bottom: 2rpx solid #F7F7F7;
+}
+.price_info .content .h {
+  font-size: 28rpx;
+  font-weight: 500;
+}
+.price_info .content .date {
+  margin-top: 20rpx;
+  font-size: 24rpx;
+}
+.price_info .content .item {
+  width: 100%;
+  height: 34rpx;
+  line-height: 34rpx;
+  margin-top: 20rpx;
+  font-size: 24rpx;
+}
+.price_info .content .item .l {
+  float: left;
+}
+.price_info .content .item .r {
+  float: right;
+  color: #BFA077;
+}
+.price_info .content:nth-last-child(1) {
+  padding-top: 0rpx;
+  padding-bottom: 0rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+  border-bottom: 0rpx;
+}
+.price_info .content:nth-last-child(1) .total_title {
+  float: left;
+}
+.price_info .content:nth-last-child(1) .total_price {
+  float: right;
+  color: #BFA077;
+}
+.order_info {
+  padding-left: 40rpx;
+  padding-right: 40rpx;
+  height: 316rpx;
+  color: #393D59;
+}
+.order_info .title {
+  padding-top: 30rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+}
+.order_info .item {
+  height: 34rpx;
+  margin-top: 20rpx;
+  font-size: 24rpx;
+}
+.order_info .item .l {
+  float: left;
+}
+.order_info .item .r {
+  float: right;
+  color: #BFA077;
+}
+.footer {
+  background-color: #FFFFFF;
+  margin-top: -20rpx;
+  border-top: 2rpx solid #F7F7F7;
+  height: 98rpx;
+}
+.footer view {
+  margin-top: 20rpx;
+  float: left;
+  width: 144rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+  background-color: #BFA077;
+  color: #FFFFFF;
+  text-align: center;
+  -webkit-border-radius: 28rpx;
+          border-radius: 28rpx;
+  font-size: 24rpx;
+  margin-left: 20rpx;
+}
+.footer view:nth-child(1) {
+  margin-left: 402rpx;
+}
+.deposit {
+  padding-left: 40rpx;
+  padding-top: 30rpx;
+  padding-right: 40rpx;
+}
+.deposit .top image {
+  float: left;
+  width: 44rpx;
+  height: 44rpx;
+  margin-right: 20rpx;
+}
+.deposit .top view {
+  color: #393D59;
+  font-size: 32rpx;
+}
+.deposit .item {
+  height: 124rpx;
+  margin-top: 30rpx;
+  border-bottom: 2rpx solid #F7F7F7;
+}
+.deposit .item .t {
+  width: 100%;
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size: 28rpx;
+}
+.deposit .item .t .l {
+  color: #393D59;
+  float: left;
+}
+.deposit .item .t .r {
+  float: right;
+  color: #BFA077;
+}
+.deposit .item .b {
+  float: right;
+  margin-top: 20rpx;
+  font-size: 24rpx;
+  color: #808080;
+}
+.deposit .item:nth-child(3) {
+  border-bottom: 0rpx;
+}
+.deposit .btns {
+  margin-top: 34rpx;
+  padding-bottom: 40rpx;
+  overflow: hidden;
+}
+.deposit .btns view {
+  float: left;
+  width: 144rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+  background-color: #BFA077;
+  color: #FFFFFF;
+  -webkit-border-radius: 28rpx;
+          border-radius: 28rpx;
+  text-align: center;
+  font-size: 24rpx;
+  margin-left: 20rpx;
+}
+.deposit .btns view:nth-child(1) {
+  margin-left: 362rpx;
+}
+.deposit_info {
+  padding-left: 40rpx;
+  padding-top: 30rpx;
+  padding-right: 40rpx;
+  color: #808080;
+}
+.deposit_info view {
+  margin-bottom: 20rpx;
+  font-size: 20rpx;
+}
+.deposit_info view:nth-child(1) {
+  margin-bottom: 12rpx;
+  font-size: 24rpx;
+}
+.deposit_info .x {
+  color: #BFA077;
+}
+.deposit_info view:nth-last-child(1) {
+  padding-bottom: 30rpx;
+}
+.handle {
+  padding-left: 40rpx;
+  padding-right: 40rpx;
+}
+.handle .t {
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  border-bottom: 2rpx solid #F7F7F7;
+}
+.handle .t view {
+  float: left;
+  margin-left: 120rpx;
+  font-size: 28rpx;
+  color: #808080;
+  font-weight: 600;
+}
+.handle .t view:nth-child(1) {
+  margin-left: 84rpx;
+}
+.handle .t .curr {
+  color: #393D59;
+}
+.handle swiper {
+  height: 128rpx;
+}
+.handle .swiper-item view {
+  font-size: 24rpx;
+  color: #E02E24;
+}
+.handle .swiper-item view:nth-child(1) {
+  padding-top: 30rpx;
+}
+
