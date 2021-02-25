@@ -1,5 +1,5 @@
 // 请求api地址
-var apiUrl = 'http://www.topclub.com';
+var apiUrl = 'http://test.bjtopclub.com';
 
 /**
  * 发起请求

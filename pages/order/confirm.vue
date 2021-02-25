@@ -372,11 +372,16 @@
 													signType: datas.signType,
 													paySign: datas.paySign,
 												    success (result) {
-														console.log(result)
 												        uni.showToast({
 															title:"支付成功",
 															icon:"none"
 												        })
+														var interval = setInterval(function(){
+															uni.navigateTo({
+																url: '/pages/order/detail'
+															})
+															clearInterval(interval)
+														}, 800)
 												    },
 												    fail () {
 												        uni.showToast({
