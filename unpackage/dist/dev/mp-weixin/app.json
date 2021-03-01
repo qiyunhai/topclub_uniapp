@@ -16,7 +16,8 @@
     "pages/auth/step1",
     "pages/auth/step2",
     "pages/message/message",
-    "pages/message/order"
+    "pages/message/order",
+    "pages/discount/discount"
   ],
   "subPackages": [],
   "window": {
@@ -55,5 +56,5 @@
     ]
   },
   "usingComponents": {},
-  "sitemapLocation": "sitemap21.json"
+  "sitemapLocation": "sitemap95.json"
 }

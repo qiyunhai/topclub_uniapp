@@ -3,27 +3,27 @@
 		<view class="module address">
 			<image src="../../static/img/order/dingwei.png" class="dw"></image>
 				<view class="info1">李某 86-17544443333</view>
-				<view class="info2">北京市 朝阳区 高碑店镇 xxx村口</view>
+				<view class="info2">{{orderInfo.user_borrow_address}}</view>
 			<image src="../../static/img/rightj.png" class="jiao"></image>
 		</view>
 		<view class="module car">
-			<image src="../../static/logo.png" class="img"></image>
-			<view class="title">兰博基尼LP700-4</view>
+			<image :src="carInfo.image" class="img"></image>
+			<view class="title">{{carInfo.title}}</view>
 			<view class="paizhao">
 				<image src="../../static/img/car_jingpai.png"></image>
-				<text>京牌</text>
+				<text>{{carInfo.license}}</text>
 			</view>
 			<view class="nian">
 				<image src="../../static/img/car_chexing.png"></image>
-				<text>16年上牌</text>
+				<text>{{carInfo.year_limit}}</text>
 			</view>
-			<view class="price">¥<text>12999</text>/天</view>
+			<view class="price">¥<text>{{carInfo.price}}</text>/天</view>
 			<view class="status">待送车</view>
 		</view>
 		<view class="module price_info">
 			<view class="content">
 				<view class="h">用车时间</view>
-				<view class="date">2021-01-08 08:00——2021-01-09 08:00</view>
+				<view class="date">{{orderInfo.start_date_time}}——{{orderInfo.end_date_time}}</view>
 			</view>
 			<view class="content">
 				<view class="h">费用明细</view>
@@ -33,16 +33,16 @@
 				</view>
 				<view class="item">
 					<view class="l">基准押金（线下未支付）</view>
-					<view class="r">￥50000</view>
+					<view class="r">￥{{orderInfo.mortgage_price}}</view>
 				</view>
 				<view class="item">
 					<view class="l">违章押金（线上已支付）</view>
-					<view class="r">￥2000</view>
+					<view class="r">￥{{orderInfo.reserve_price}}</view>
 				</view>
 			</view>
 			<view class="content">
 				<view class="total_title">线下支付费用</view>
-				<view class="total_price">￥62999</view>
+				<view class="total_price">￥{{orderInfo.price}}</view>
 			</view>
 		</view>
 		<view class="module deposit">
@@ -53,14 +53,14 @@
 			<view class="item">
 				<view class="t">
 					<view class="l">基准押金（用车中）</view>
-					<view class="r">￥50000</view>
+					<view class="r">￥{{orderInfo.mortgage_price}}</view>
 				</view>
 				<view class="b">*用车期间车辆无损，还车当天退还押金</view>
 			</view>
 			<view class="item">
 				<view class="t">
 					<view class="l">违章押金（用车中）</view>
-					<view class="r">￥2000</view>
+					<view class="r">￥{{orderInfo.reserve_price}}</view>
 				</view>
 				<view class="b">*订单结束后20天内退还押金</view>
 			</view>
@@ -105,17 +105,17 @@
 		<view class="module order_info">
 			<view class="title">订单信息</view>
 			<view class="item">
-				<view class="l">订单编号：1499961123334561818</view>
+				<view class="l">订单编号：{{orderInfo.order_number}}</view>
 				<view class="r">复制</view>
 			</view>
 			<view class="item">
 				<view class="l">支付方式：微信支付</view>
 			</view>
 			<view class="item">
-				<view class="l">创建时间：2021-01-07 16:23:56</view>
+				<view class="l">创建时间：{{orderInfo.createtime}}</view>
 			</view>
 			<view class="item">
-				<view class="l">付款时间：2021-01-07 16:24:21</view>
+				<view class="l">付款时间：{{orderInfo.pay_time}}</view>
 			</view>
 		</view>
 		<view class="footer">
@@ -130,12 +130,21 @@
 	export default {
 		data() {
 			return {
-				statusCurrent: 0
+				statusCurrent: 0,
+				orderInfo: [],
+				carInfo: []
 			}
 		},
 		methods: {
-			onLoad() {
-				
+			onLoad(option) {
+				api.request('/api/order/detail', {
+					order_number: option.order_number
+				}, 'GET', true).then(res => {
+					console.log(res)
+					var datas = res.data.result;
+					this.orderInfo = datas
+					this.carInfo = datas.Car
+				})
 			},
 			statusChange(e) {
 				if(typeof e == 'object') {

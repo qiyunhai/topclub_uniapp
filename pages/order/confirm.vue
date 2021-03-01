@@ -378,7 +378,7 @@
 												        })
 														var interval = setInterval(function(){
 															uni.navigateTo({
-																url: '/pages/order/detail'
+																url: '/pages/order/detail?order_number='+order_number
 															})
 															clearInterval(interval)
 														}, 800)

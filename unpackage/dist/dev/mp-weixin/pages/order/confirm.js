@@ -94,7 +94,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   wPicker: function() {
-    return __webpack_require__.e(/*! import() | components/w-picker/w-picker */ "components/w-picker/w-picker").then(__webpack_require__.bind(null, /*! @/components/w-picker/w-picker.vue */ 148))
+    return __webpack_require__.e(/*! import() | components/w-picker/w-picker */ "components/w-picker/w-picker").then(__webpack_require__.bind(null, /*! @/components/w-picker/w-picker.vue */ 156))
   }
 }
 var render = function() {
@@ -503,7 +503,7 @@ var _default = { data: function data() {return { shortTermVisibleStart: false, s
         var order_number = res.data.result.order_number;if (res.data.status == 1) {// 下单成功，发起支付
           uni.getProvider({ service: 'oauth', success: function success(e) {if (~e.provider.indexOf('weixin')) {uni.login({ provider: 'weixin',
                   success: function success(loginRes) {
-                    _api.default.request('/api/Pay/test', {
+                    _api.default.request('/api/Pay/wxPayOrder', {
                       code: loginRes.code,
                       order_number: order_number }).
                     then(function (res) {
@@ -517,11 +517,16 @@ var _default = { data: function data() {return { shortTermVisibleStart: false, s
                         signType: datas.signType,
                         paySign: datas.paySign,
                         success: function success(result) {
-                          console.log(result);
                           uni.showToast({
                             title: "支付成功",
                             icon: "none" });
 
+                          var interval = setInterval(function () {
+                            uni.navigateTo({
+                              url: '/pages/order/detail?order_number=' + order_number });
+
+                            clearInterval(interval);
+                          }, 800);
                         },
                         fail: function fail() {
                           uni.showToast({

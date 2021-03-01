@@ -385,7 +385,7 @@ var _api = _interopRequireDefault(__webpack_require__(/*! @/util/api.js */ 25));
 //
 //
 //
-var _default = { data: function data() {return { statusCurrent: 0 };}, methods: { onLoad: function onLoad() {}, statusChange: function statusChange(e) {if (typeof e == 'object') {var curr = e.detail.current;} else {var curr = e;}this.statusCurrent = curr;} } };exports.default = _default;
+var _default = { data: function data() {return { statusCurrent: 0 };}, methods: { onLoad: function onLoad(option) {option.order_number = 292103012239131642;_api.default.request('/api/order/detail', { order_number: option.order_number }, 'GET', true).then(function (res) {console.log(res);});}, statusChange: function statusChange(e) {if (typeof e == 'object') {var curr = e.detail.current;} else {var curr = e;}this.statusCurrent = curr;} } };exports.default = _default;
 
 /***/ }),
 
